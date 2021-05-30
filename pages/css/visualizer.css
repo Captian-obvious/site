@@ -1,0 +1,54 @@
+.para {
+    font-size:1em;
+    text-align:center;
+    color:#980000;
+}
+.td{
+    height:100%;
+    width:100%;
+    font-size:8;
+}
+#media-icon {
+    width:38px;
+    height:38px;
+}
+#MediaPlayerControls-media-icon-play {
+    width:48px;
+    height:48px;
+    text-align:center;
+    border:none;
+    background:none;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #MediaPlayerControls-seekbar {
+      width: 100%;
+      height: 5px;
+      -webkit-appearance: none;
+    }
+    
+    #MediaPlayerControls-seekbar::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      background: #980000;
+      margin-top: -1px;
+    }
+    #MediaPlayerControls-seekbar::-webkit-slider-thumb {
+      width: 10px;
+      height: 10px;
+      cursor: pointer;
+      background: red;
+    }
+}
+#canvas {
+    position: center;
+    width: 100%;
+    height: 100%;
+}
+#thefile {
+    color: #980000;
+}
+#aud_add {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}

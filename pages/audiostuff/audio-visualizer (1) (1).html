@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="../../images/apple-icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../images/apple-icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="../../images/apple-icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../../images/apple-icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="../../images/apple-icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../../images/apple-icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="../../images/apple-icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../../images/apple-icons/apple-icon-180x180.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="../../images/apple-icons/apple-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../../images/android-icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../images/favicon-96.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon.png">
+        <link rel="mask-icon" type="image/svg" sizes="96x96" href="../../images/favicon-96.svg" color="#ff0000">
+        <link rel="mask-icon" type="image/svg" sizes="32x32" href="../../images/favicon-32.svg" color="#ff0000">
+        <link rel="mask-icon" type="image/svg" sizes="16x16" href="../../images/favicon.svg" color="#ff0000">
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" href="../../css/visuals.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Music and Audio Visualizer</title>
+    </head>
+    <body>
+        <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+        <input type="file" id="thefile" accept="audio/*" /><br>
+        <div id="MediaPlayerControls">
+            <div class="MediaPlayerIcon-icon-play" id="MediaPlayerIcon-icon-play" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="../../images/play-icon.svg"></div>
+            <input id="MediaPlayerControls-seekbar" type="range" name="rng" min="0" value="0">
+        </div>
+        <audio id="audio" controls hidden></audio>
+        <canvas id="canvas"></canvas>
+        <script nouce="cdn.main-9ws9e4sr45d9.js">
+            window.onload = function() {
+                var file = document.getElementById("thefile");
+                var audio = document.getElementById('audio');
+                var dur = document.getElementById('MediaPlayerControls-seekbar')
+                var button = document.getElementById('MediaPlayerIcon-icon-play')
+                file.onchange = function() {
+                    var files = this.files;
+                    audio.src = URL.createObjectURL(files[0]);
+                    audio.load();
+                    var context = new AudioContext();
+                    var src = context.createMediaElementSource(audio);
+                    var analyser = context.createAnalyser();
+                    var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+                    src.connect(analyser);
+                    analyser.connect(context.destination);
+                        
+                    analyser.fftSize = 512;
+                    analyser.maxDecibels = -4
+                    analyser.minDecibels = -120
+                        
+                    var bufferLength = analyser.frequencyBinCount;
+                    console.log(bufferLength);
+                        
+                    var dataArray = new Uint8Array(bufferLength);
+                    
+                    var maxHeight = canvas.height/2
+                    var WIDTH = canvas.width;
+                    var HEIGHT = canvas.height;
+                        
+                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barHeight;
+                    var x = 0;
+                        
+                    function renderFrame() {
+                        requestAnimationFrame(renderFrame);
+                        
+                        x = 0;
+                        
+                        analyser.getByteFrequencyData(dataArray);
+                        
+                        ctx.fillStyle = "#000000";
+                        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+                        HEIGHT = canvas.height;
+                        
+                        ctx.fillStyle = "#980000";
+                        ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
+                        for (var i = 0; i < bufferLength; i++) {
+                            barHeight = dataArray[i];
+                                
+                            var r = barHeight + (25 * (i/bufferLength));
+                            var g = 250 * (i/bufferLength);
+                            var b = 50;
+                        
+                            ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                            ctx.fillRect(x, maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                        
+                            x += barWidth + 1;
+                        }
+                    }
+                    renderFrame();
+                    audio.play();
+                    button.className = "media-icon-pause";
+                    button.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/pause-icon.svg'>";
+                    dur.addEventListener("change", function() {
+                        audio.currentTime = dur.value
+                    })
+                    audio.addEventListener("timeupdate", function() {
+                        dur.value=audio.currentTime; 
+                        dur.max = audio.duration;
+                    })
+                    button.addEventListener("click", function() {
+                        var aud = document.getElementById("audio")
+                        if(this.className == 'MediaPlayerIcon-icon-pause'){
+                            this.className = "MediaPlayerIcon-icon-play";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/play-icon.svg'>";
+                            aud.pause();
+                        }else{
+                            this.className = "MediaPlayerIcon-icon-pause";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/pause-icon.svg'>";
+                            aud.play();
+                        }
+                        aud.addEventListener("ended", function() {
+                            button.className = "MediaPlayerIcon-icon-play";
+                            button.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/play-icon.svg'>"
+                        })
+                    })
+                    audio.addEventListener("play", function(){
+                        button.className = "MediaPlayerIcon-icon-pause";
+                        button.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/pause-icon.svg'>";
+                    })
+                    audio.addEventListener("pause", function() {
+                        button.className = "MediaPlayerIcon-icon-play";
+                        button.innerHTML = "<img id='media-icon' width='30px' height='30px' src='../../images/play-icon.svg'>";
+                    })
+                }};
+            </script>
+            <noscript>Your Browser Does Not Support JavaScript or Analyzer Node!</noscript>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+.para {
+    font-size:1em;
+    text-align:center;
+    color:#980000;
+}
+.td{
+    height:100%;
+    width:100%;
+    font-size:8;
+}
+#media-container {
+    width:100%;
+    height:100%;
+}
+#liscense {
+    font-size:0.7em;
+    color:#980000;
+}
+#MediaPlayerIcon-icon-play {
+    width:28px;
+    height:28px;
+    text-align:center;
+    border:none;
+    background:none;
+    position:relative;
+    left:122px;
+    top:122px;
+}
+#album {
+    width:150px;
+    height:150px;
+    background-image:url("../images/default/default-album-icon.png");
+}
+#MediaPlayerControl-seekbar {
+    width: calc(100% - 30px);
+    height: 15px;
+    position: relative;
+    top:100px;
+}
+#canvas {
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+#thefile {
+    color: #980000;
+}
+#audio {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}
