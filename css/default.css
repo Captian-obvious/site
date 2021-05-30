@@ -1,0 +1,20 @@
+#link1 {
+    color:#980000;
+}
+#link1:hover {
+    color:#ff0000;
+}
+#link2 {
+    color:#980000;
+}
+#link2:hover {
+    color:#ff0000;
+}
+#linkImage1 {
+    width:96px;
+    height:96px;
+}
+#linkImage2 {
+    width:96px;
+    height:96px;
+}

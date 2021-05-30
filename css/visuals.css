@@ -1,0 +1,39 @@
+.para {
+    font-size:1em;
+    text-align:center;
+    color:#980000;
+}
+.td{
+    height:100%;
+    width:100%;
+    font-size:8;
+}
+#media-icon {
+    width:100%;
+    height:100%;
+}
+#MediaPlayerIcon-icon-play {
+    width:38px;
+    height:38px;
+    text-align:center;
+    border:none;
+    background:none;
+}
+#MediaPlayerControls-seekbar {
+    width: 100%;
+    height: 15px;
+    position: center;
+}
+#canvas {
+    position: center;
+    width: 100%;
+    height: 100%;
+}
+#thefile {
+    color: #980000;
+}
+#aud_add {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}
