@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="images/apple-icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="images/apple-icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="images/apple-icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="images/apple-icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="images/apple-icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="images/apple-icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="images/apple-icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="images/apple-icons/apple-icon.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="images/apple-icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
+        <link rel="manifest" href="manifest.json">
+        <style>
+            .para {
+                font-size:1em;
+                text-align:center;
+                color:#980000;
+            }
+            .td{
+                height:100%;
+                width:100%;
+                font-size:8;
+            }
+            #media-icon {
+                width:38px;
+                height:38px;
+            }
+            #media-icon-play {
+                width:48px;
+                height:48px;
+                text-align:center;
+                border:none;
+                background:none;
+            }
+            #canvas {
+              position: center;
+              width: 100%;
+              height: 100%;
+            }
+            #thefile {
+              color: #980000;
+            }
+            #aud_add {
+                position: fixed;
+                left: 10px;
+                bottom: 10px;
+                width: 100%;
+            }
+        </style>
+        <title>Music and Audio Visualizer</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <input type="file" id="thefile" accept="audio/*" />
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div id="content">
+                          <button class="media-icon-play" id="media-icon-play" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="images/play-icon.svg"></button>
+                        </div>
+                    </td>
+                    <td class="td">
+                        <audio id="audio" controls></audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <canvas id="canvas"></canvas>
+        <script nouce="main">
+            window.onload = function() {
+                var file = document.getElementById("thefile");
+                var audio = document.getElementById('audio');
+                file.onchange = function() {
+                    var files = this.files;
+                    audio.src = URL.createObjectURL(files[0]);
+                    audio.load();
+                    var context = new AudioContext();
+                    var src = context.createMediaElementSource(audio);
+                    var analyser = context.createAnalyser();
+                    var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+                        
+                    src.connect(analyser);
+                    analyser.connect(context.destination);
+                        
+                    analyser.fftSize = 512;
+                        
+                    var bufferLength = analyser.frequencyBinCount;
+                    console.log(bufferLength);
+                        
+                    var dataArray = new Uint8Array(bufferLength);
+                    
+                    var maxHeight = canvas.height/2
+                    var WIDTH = canvas.width;
+                    var HEIGHT = canvas.height;
+                        
+                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barHeight;
+                    var x = 0;
+                        
+                    function renderFrame() {
+                        requestAnimationFrame(renderFrame);
+                        
+                        x = 0;
+                        
+                        analyser.getByteFrequencyData(dataArray);
+                        
+                        ctx.fillStyle = "#000000";
+                        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+                        HEIGHT = canvas.height;
+                        ctx.fillStyle = "#980000";
+                        ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
+                        for (var i = 0; i < bufferLength; i++) {
+                            barHeight = dataArray[i];
+                                
+                            var r = barHeight + (25 * (i/bufferLength));
+                            var g = 250 * (i/bufferLength);
+                            var b = 50;
+                        
+                            ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                            ctx.fillRect(x, maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                        
+                            x += barWidth + 1;
+                        }
+                    }
+                    renderFrame();
+                    audio.play();
+                    document.getElementById("media-icon-play").className = "media-icon-pause-add";
+                    document.getElementById("media-icon-play").innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                    document.getElementById("media-icon-play").addEventListener("click", function() {
+                        var aud = document.getElementById("audio")
+                        if(this.className == 'media-icon-pause'){
+                            this.className = "media-icon-play";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/play-icon.svg'>";
+                            aud.pause();
+                        }else{
+                            this.className = "media-icon-pause";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                            aud.play();
+                        }
+                        aud.ended = function() {
+                            var img = document.getElementById("media-icon")
+                            document.getElementById("media-icon-play").className = "media-icon-play-add";
+                            document.getElementById("media-icon-play").innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/play-icon.png'>"
+                        }
+                    })
+                }};
+            </script>
+    </body>
+</html>

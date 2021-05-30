@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+        <link rel="manifest" href="manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="images/ms-icons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <title>Music Links</title>
+        <style>
+            .para {
+                font-size:1em;
+                text-align:center;
+                color:#980000;
+            }
+            .td{
+                height:100%;
+                width:100%;
+                font-size:8;
+            }
+            #media-icon-play {
+                width:48px;
+                height:48px;
+                text-align:center;
+                border:none;
+            }
+            #media-icon-play1 {
+                width:48px;
+                height:48px;
+                text-align:center;
+                border:none;
+            }
+            #media-icon-play2 {
+                width:48px;
+                height:48px;
+                text-align:center;
+                border:none;
+            }
+            #media-icon-play-add {
+                width:48px;
+                height:48px;
+                text-align:center;
+                border:none;
+            }
+            #media-icon {
+                width:45px;
+                height:45px;
+            }
+            #canvas {
+                width:100%;
+                height:100%;
+            }
+            #aud_add {
+                position: fixed;
+                left: 10px;
+                bottom: 10px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="musicDiv">
+            <table>
+                <tr>
+                    <td>
+                        <audio id="aud" hidden src="MP3/Orchestral-Landscapes-1-Volcanic-Lava-(A).mp3" type="audio/mpeg"></audio>
+                        <button class="media-icon-play" id="media-icon-play" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="images/play-icon.svg"></button>
+                    </td>
+                    <td class="td">
+                        <p class="para">Orchestral Landscapes 1 - Volcanic Lava (A)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <audio id="aud1" hidden src="MP3/Approaching-Nirvania-Sandstorm.mp3" type="audio/mpeg"></audio>
+                        <button class="media-icon-play1" id="media-icon-play1" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="images/play-icon.svg"></button>
+                    </td>
+                    <td>
+                        <p class="para">Approaching Nirvania - Sandstorm</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <audio id="aud2" hidden src="MP3/Waterflame.mp3" type="audio/mpeg"></audio>
+                        <button class="media-icon-play2" id="media-icon-play2" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="images/play-icon.svg"></button>
+                    </td>
+                    <td>
+                        <p class="para">Waterflame - Monsterbreaks</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="content">
+                          <button class="media-icon-play-add" id="media-icon-play-add" width="38px" height="38px"><img id="media-icon" width="30px" height="30px" src="images/play-icon.svg"></button>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="file" id="thefile" accept="audio/*" />
+                    </td>
+                    <td class="td">
+                        <audio id="aud-add" controls></audio>
+                    </td>
+                </tr>
+            </table>
+            <canvas id="canvas"></canvas>
+        </div>
+        <script nouce="icon-play">
+                document.getElementById("media-icon-play").addEventListener("click", function(){
+                var audio = document.getElementById('aud');
+                if(this.className == 'media-icon-pause'){
+                    this.className = "media-icon-play";
+                    this.innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/play-icon.svg'>"
+                    audio.pause();
+                }else{
+                    this.className = "media-icon-pause";
+                    this.innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                    audio.play();
+                }
+                audio.ended = function (){
+                        document.getElementById("media-icon-play").className = "media-icon-play";
+                        document.getElementById("media-icon-play").innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/play-icon.svg'>"
+                    })
+                });
+                document.getElementById("media-icon-play1").addEventListener("click", function(){
+                    var audio = document.getElementById('aud1');
+                    if(this.className == 'media-icon-pause1'){
+                        this.className = "media-icon-play1";
+                        this.innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/play-icon.svg'>"
+                        audio.pause();
+                    }else{
+                        this.className = "media-icon-pause1";
+                        this.innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                        audio.play();
+                    }
+                    audio.ended = function (){
+                            document.getElementById("media-icon-play1").className = "media-icon-play1";
+                            document.getElementById("media-icon-play1").innerHTML = "<img class='media-icon' width='28px' height='28px' src='images/play-icon.svg'>"
+                    })
+                });
+                document.getElementById("media-icon-play2").addEventListener("click", function(){
+                    var audio = document.getElementById('aud2');
+                    if(this.className == 'media-icon-pause2'){
+                        this.className = "media-icon-play2";
+                        this.innerHTML = "<img class='media-icon' width='28px' height='28px' src='images/play-icon.svg'>"
+                        audio.pause();
+                    }else{
+                        this.className = "media-icon-pause2";
+                        this.innerHTML = "<img class='media-icon' width='28px' height='28px' src='images/pause-icon.svg'>";
+                        audio.play();
+                    }
+                    audio.ended = function (){
+                        document.getElementById("media-icon-play2").className = "media-icon-play2";
+                        document.getElementById("media-icon-play2").innerHTML = "<img class='media-icon' width='28px' height='28px' src='images/play-icon.svg'>"
+                    })
+                });
+        </script>
+        <script nouce="main">
+            window.onload = function() {
+                var file = document.getElementById("thefile");
+                var audio = document.getElementById('aud-add');
+                file.onchange = function() {
+                    var files = this.files;
+                    audio.src = URL.createObjectURL(files[0]);
+                    audio.load();
+                    var context = new AudioContext();
+                    var src = context.createMediaElementSource(audio);
+                    var analyser = context.createAnalyser();
+                    var canvas = document.getElementById("canvas");
+                    var ctx = canvas.getContext("2d");
+                        
+                    src.connect(analyser);
+                    analyser.connect(context.destination);
+                        
+                    analyser.fftSize = 512;
+                        
+                    var bufferLength = analyser.frequencyBinCount;
+                    console.log(bufferLength);
+                        
+                    var dataArray = new Uint8Array(bufferLength);
+                    
+                    var maxHeight = canvas.height/2
+                    var WIDTH = canvas.width;
+                    var HEIGHT = canvas.height;
+                        
+                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barHeight;
+                    var x = 0;
+                        
+                    function renderFrame() {
+                        requestAnimationFrame(renderFrame);
+                        
+                        x = 0;
+                        
+                        analyser.getByteFrequencyData(dataArray);
+                        
+                        ctx.fillStyle = "#000";
+                        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+                        HEIGHT = canvas.height;
+                        
+                        for (var i = 0; i < bufferLength; i++) {
+                            barHeight = dataArray[i];
+                                
+                            var r = barHeight + (25 * (i/bufferLength));
+                            var g = 250 * (i/bufferLength);
+                            var b = 50;
+                        
+                            ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                            ctx.fillRect(x, maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                        
+                            x += barWidth + 1;
+                        }
+                    }
+                    renderFrame();
+                    audio.play();
+                    document.getElementById("media-icon-play-add").className = "media-icon-pause-add";
+                    document.getElementById("media-icon-play-add").innerHTML = "<img class='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                    document.getElementById("media-icon-play-add").addEventListener("click", function() {
+                        var aud = document.getElementById("aud-add")
+                        if(this.className == 'media-icon-pause-add'){
+                            this.className = "media-icon-play-add";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/play-icon.svg'>"
+                            aud.pause();
+                        }else{
+                            this.className = "media-icon-pause-add";
+                            this.innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/pause-icon.svg'>";
+                            aud.play();
+                        }
+                        aud.ended = function() {
+                            document.getElementById("media-icon-play-add").className = "media-icon-play-add";
+                            document.getElementById("media-icon-play-add").innerHTML = "<img id='media-icon' width='30px' height='30px' src='images/play-icon.svg'>"
+                        }
+                    })
+                }};
+            </script>
+    </body>
+</html>
