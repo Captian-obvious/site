@@ -24,22 +24,6 @@
         <title>MediaPlayer-V2 - Visualizer</title>
     </head>
     <body>
-        <table id="linkbar">
-            <tr>
-                <td class="td" id="home-link">
-                    <a href="../../"><div id="home-btn"></div></a>
-                </td>
-                <td class="td">
-                    
-                </td>
-                <td class="td">
-                    
-                </td>
-                <td class="td">
-                    
-                </td>
-            </tr>
-        </table>
         <div id="media-container">
             <input type="file" id="thefile" accept="audio/*">
             <canvas id="canvas"></canvas>
@@ -49,6 +33,7 @@
                     <div id="MediaPlayerControls">
                         <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon-icon-play" data-mediathumb-url="src"></div>
                         <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">
+                        <div id="time-position"></div>
                     </div>
                     <img src="../../images/default/default-album-icon.png" width="150px" height="150px">
                 </div>
