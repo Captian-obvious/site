@@ -75,6 +75,7 @@
     height: 15px;
     position: fixed;
     top:140px;
+    
 }
 .MediaPlayerIcon-icon-pause {
     background-image: url("../images/pause-icon.svg");
