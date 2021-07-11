@@ -3,29 +3,6 @@
     text-align:center;
     color:#980000;
 }
-.td{
-    height:100%;
-    width:100%;
-    font-size:8;
-}
-#linkbar {
-    height:32px;
-    width:100%;
-}
-#home-btn {
-    height:32px;
-    width:32px;
-    background-size:cover;
-    background-position:center;
-    background-image: url("../../images/default/home.svg");
-}
-#home-btn:hover {
-    background-image: url("../../images/default/home-hover.svg");
-}
-.td {
-    width:100%;
-    height:100%;
-}
 #thefile {
     position: fixed;
     top: 10px;
@@ -57,12 +34,12 @@
     background-position:center;
     position:fixed;
     left:130px;
-    top:150px;
+    top:160px;
 }
 #time-position {
     position: fixed;
     left: 110px;
-    top: 140px;
+    top: 152px;
     width: 50px;
     height: 5px;
     text-align: center;
@@ -74,8 +51,7 @@
     width: 120px;
     height: 15px;
     position: fixed;
-    top:145px;
-    
+    top:157px;
 }
 .MediaPlayerIcon-icon-pause {
     background-image: url("../images/pause-icon.svg");
