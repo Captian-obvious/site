@@ -57,12 +57,12 @@
     background-position:center;
     position:fixed;
     left:130px;
-    top:156px;
+    top:150px;
 }
 #time-position {
     position: fixed;
     left: 110px;
-    top: 186px;
+    top: 150px;
     width: 50px;
     height: 5px;
     text-align: center;
@@ -74,7 +74,7 @@
     width: 120px;
     height: 15px;
     position: fixed;
-    top:190px;
+    top:154px;
 }
 .MediaPlayerIcon-icon-pause {
     background-image: url("../images/pause-icon.svg");
