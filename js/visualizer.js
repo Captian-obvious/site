@@ -6,6 +6,7 @@ window.onload = function() {
     var image = document.getElementById('media-icon')
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play")
     var button = document.getElementById("MediaPlayerIcon-icon-play")
+    var position = document.getElementById("time-position")
     file.onchange = function() {
         var files = this.files;
         var colorValue = "#ff0000"
@@ -72,6 +73,7 @@ window.onload = function() {
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
+            position.innerHTML = audio.currentTime+"/"+audio.duration
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
