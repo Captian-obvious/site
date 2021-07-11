@@ -3,36 +3,86 @@
     text-align:center;
     color:#980000;
 }
-.td{
-    height:100%;
-    width:100%;
-    font-size:8;
-}
-#media-icon {
-    width:100%;
-    height:100%;
-}
-#MediaPlayerIcon-icon-play {
-    width:38px;
-    height:38px;
-    text-align:center;
-    border:none;
-    background:none;
-}
-#MediaPlayerControls-seekbar {
-    width: 100%;
-    height: 15px;
-    position: center;
-}
-#canvas {
-    position: center;
-    width: 100%;
-    height: 100%;
-}
 #thefile {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
     color: #980000;
 }
-#aud_add {
+#main {
+    width:100%;
+    width:100%;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+#media-container {
+    width:100%;
+    height:100%;
+}
+#liscense {
+    font-size:0.7em;
+    color:#980000;
+}
+#MediaPlayerIcon-icon-play {
+    width:28px;
+    height:28px;
+    text-align:center;
+    border:none;
+    background-size:cover;
+    background-position:center;
+    position:fixed;
+    left:130px;
+    top:149px;
+}
+#time-position {
+    position: fixed;
+    left: 110px;
+    top: 132px;
+    width: 50px;
+    height: 5px;
+    text-align: center;
+}
+#MediaPlayerIcon-icon-play:hover {
+    cursor:pointer;
+}
+#MediaPlayerControl-seekbar {
+    width: 120px;
+    height: 15px;
+    position: fixed;
+    top:153px;
+}
+.MediaPlayerIcon-icon-pause {
+    background-image: url("../images/pause-icon.svg");
+}
+.MediaPlayerIcon-icon-play {
+    background-image: url("../images/play-icon.svg");
+}
+.MediaPlayerIcon-icon-play:hover {
+    background-image: url("../images/play-icon-hover.svg");
+}
+.MediaPlayerIcon-icon-pause:hover {
+    background-image: url("../images/pause-icon-hover.svg");
+}
+#album {
+    width:150px;
+    height:150px;
+    background-image: url("../images/default/default-album-icon.png");
+}
+#CanvasContainer {
+    width:100%;
+    height:100%;
+    position:center;
+}
+#canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#audio {
     position: fixed;
     left: 10px;
     bottom: 10px;
