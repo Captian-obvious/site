@@ -73,7 +73,7 @@ window.onload = function() {
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
-            position.innerHTML = audio.currentTime+"/"+audio.duration
+            position.innerHTML = audio.currentTime.Minutes+":"+audio.currentTime.Seconds+" / "+audio.duration.Minutes+":"+audio.duration.seconds
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
