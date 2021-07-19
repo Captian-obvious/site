@@ -1,10 +1,12 @@
 window.onload = function() {
     var file = document.getElementById("thefile");
+    const canvasContainer = document.getElementById("CanvasContainer");
     var audio = document.getElementById('audio');
     var dur = document.getElementById('MediaPlayerControl-seekbar')
     var image = document.getElementById('media-icon')
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play")
     var button = document.getElementById("MediaPlayerIcon-icon-play")
+    var position = document.getElementById("time-position")
     file.onchange = function() {
         var files = this.files;
         var colorValue = "#ff0000"
@@ -33,7 +35,7 @@ window.onload = function() {
         var WIDTH = canvas.width;
         var HEIGHT = canvas.height;
                         
-        var barWidth = (WIDTH / bufferLength) * 2.5;
+        var barWidth = (WIDTH / bufferLength);
         var barHeight;
         var x = 0;
                         
@@ -47,7 +49,7 @@ window.onload = function() {
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             HEIGHT = canvas.height;
-                        
+            var imageBlobData = ctx.getImageData(0, 0, canvas.width, canvas.height)
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
             for (var i = 0; i < bufferLength; i++) {
@@ -65,13 +67,13 @@ window.onload = function() {
         }
         renderFrame();
         audio.play();
-        button.className = "MediaPlayerIcon-icon-pause";
         dur.addEventListener("change", function() {
             audio.currentTime = dur.value
         })
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
+            position.innerHTML = Math.floor(audio.currentTime*60)+":"+Math.ceil(audio.currentTime)+" / "+Math.floor(audio.duration*60)+":"+Math.ceil(audio.duration)
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
@@ -94,5 +96,4 @@ window.onload = function() {
             button.className = "MediaPlayerIcon-icon-pause";
         });
     }
-    
 };
