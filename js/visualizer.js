@@ -71,9 +71,13 @@ window.onload = function() {
             audio.currentTime = dur.value
         })
         audio.addEventListener("timeupdate", function() {
+            var curminutes = Math.floor(audio.currentTime/60)
+            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
+            var minutes = Math.floor(audio.duration/60)
+            var seconds = Math.ceil(audio.duration-(minutes*60))
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
-            position.innerHTML = Math.floor(audio.currentTime/60)+":"+Math.ceil(audio.currentTime)+" / "+Math.floor(audio.duration/60)+":"+Math.ceil(audio.duration)
+            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
