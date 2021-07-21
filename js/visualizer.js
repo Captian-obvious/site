@@ -23,7 +23,7 @@ window.onload = function() {
         analyser.connect(context.destination);
                         
         analyser.fftSize = 512;
-        analyser.maxDecibels = -4
+        analyser.maxDecibels = -3
         analyser.minDecibels = -120
                         
         var bufferLength = analyser.frequencyBinCount;
