@@ -71,8 +71,8 @@ window.onload = function() {
             audio.currentTime = dur.value
         })
         audio.addEventListener("timeupdate", function() {
-            var curminutes = Math.floor(audio.currentTime/60)
-            var curseconds = Math.ceil(audio.currentTime-(curminutes*59))
+            var curminutes = Math.floor(audio.currentTime/59)
+            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
             var minutes = Math.floor(audio.duration/60)
             var seconds = Math.ceil(audio.duration-(minutes*60))
             dur.value=audio.currentTime; 
