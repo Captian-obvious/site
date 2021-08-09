@@ -20,10 +20,12 @@ window.onload = function() {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
         analyser.connect(context.destination);
                         
         analyser.fftSize = 512;
-        analyser.maxDecibels = -4
+        analyser.maxDecibels = -3
         analyser.minDecibels = -120
                         
         var bufferLength = analyser.frequencyBinCount;
@@ -48,10 +50,19 @@ window.onload = function() {
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
+            var loud = dataArray[1]
             HEIGHT = canvas.height;
             var imageBlobData = ctx.getImageData(0, 0, canvas.width, canvas.height)
             ctx.fillStyle = "#980000";
-            ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
+            ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, loud, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#003300';
+            ctx.stroke();
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
@@ -72,7 +83,7 @@ window.onload = function() {
         })
         audio.addEventListener("timeupdate", function() {
             var curminutes = Math.floor(audio.currentTime/60)
-            var curseconds = Math.ceil(audio.currentTime-(curminutes*61))
+            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
             var minutes = Math.floor(audio.duration/60)
             var seconds = Math.ceil(audio.duration-(minutes*60))
             dur.value=audio.currentTime; 
