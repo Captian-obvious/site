@@ -57,7 +57,7 @@ window.onload = function() {
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
 
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/4, 0, 2 * Math.PI, false);
+            ctx.arc(centerX, centerY, loud / 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'white';
             ctx.fill();
             ctx.lineWidth = 5;
