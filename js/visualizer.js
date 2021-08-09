@@ -20,6 +20,8 @@ window.onload = function() {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
         analyser.connect(context.destination);
                         
         analyser.fftSize = 512;
@@ -52,8 +54,15 @@ window.onload = function() {
             HEIGHT = canvas.height;
             var imageBlobData = ctx.getImageData(0, 0, canvas.width, canvas.height)
             ctx.fillStyle = "#980000";
-            ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
-            ctx.fillCirc(0,0,loud,loud)
+            ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, loud, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#003300';
+            ctx.stroke();
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
