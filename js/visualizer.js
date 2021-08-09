@@ -48,10 +48,12 @@ window.onload = function() {
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
+            var loud = dataArray[1]
             HEIGHT = canvas.height;
             var imageBlobData = ctx.getImageData(0, 0, canvas.width, canvas.height)
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2)
+            ctx.fillCirc(0,0,loud,loud)
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
