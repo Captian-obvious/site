@@ -67,9 +67,11 @@ window.onload = function() {
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
                 var b = 50;
-                        
+                
+                
+                ctx.rotate(x*Math.PI/180)
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                ctx.fillRect(x+centerX, centerY*maxHeight+HEIGHT - barHeight, barWidth, barHeight);
                         
                 x += barWidth + 1;
             }
