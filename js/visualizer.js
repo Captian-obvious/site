@@ -71,7 +71,7 @@ window.onload = function() {
                 
                 ctx.rotate(x*Math.PI/180)
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x+centerX, centerY*maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                ctx.fillRect(x+centerX, loud+centerY+HEIGHT - barHeight/2, barWidth, barHeight);
                         
                 x += barWidth + 1;
             }
