@@ -57,12 +57,10 @@ window.onload = function() {
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
 
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud - loud/4, 0, Math.PI*2, false);
+            ctx.arc(centerX, centerY, loud/4, 0, Math.PI*2, false);
             ctx.fillStyle = 'white';
             ctx.fill();
             ctx.lineWidth = 5;
-            ctx.strokeStyle = '#003300';
-            ctx.stroke();
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
