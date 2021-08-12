@@ -70,7 +70,7 @@ window.onload = function() {
                 
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, (HEIGHT - barHeight)*4, barWidth, barHeight);
+                ctx.fillRect(x, (HEIGHT - barHeight)/-4, barWidth, barHeight);
                         
                 x += barWidth + 1;
             }
