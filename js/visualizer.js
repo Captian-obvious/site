@@ -69,9 +69,8 @@ window.onload = function() {
                 var b = 50;
                 
                 
-                ctx.rotate(x*Math.PI/180)
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x+centerX, loud+centerY+HEIGHT - barHeight/2, barWidth, barHeight);
+                ctx.fillRect(x,HEIGHT - barHeight/2, barWidth, barHeight);
                         
                 x += barWidth + 1;
             }
