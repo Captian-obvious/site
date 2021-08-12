@@ -58,7 +58,7 @@ window.onload = function() {
 
             ctx.beginPath();
             ctx.arc(centerX, centerY, loud/4, 0, Math.PI*2, false);
-            ctx.fillStyle = '#ffff10';
+            ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = 5;
             for (var i = 0; i < bufferLength; i++) {
