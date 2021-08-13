@@ -1,6 +1,7 @@
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
+    const z = 0
     var audio = document.getElementById('audio');
     var dur = document.getElementById('MediaPlayerControl-seekbar')
     var image = document.getElementById('media-icon')
@@ -85,6 +86,12 @@ window.onload = function() {
             var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
             var minutes = Math.floor(audio.duration/60)
             var seconds = Math.ceil(audio.duration-(minutes*60))
+            if seconds < 10 {
+               seconds = z+seconds
+            };
+            if curseconds < 10 {
+               curseconds = z+curseconds
+            };
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
             position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
