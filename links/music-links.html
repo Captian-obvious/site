@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icons/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icons/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icons/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icons/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icons/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icons/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icons/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icons/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icons/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icons/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+        <link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../images/apple-icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../images/apple-icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/apple-icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../images/apple-icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../images/apple-icons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../images/android-icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon.png">
         <link rel="manifest" href="manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="images/ms-icons/ms-icon-144x144.png">
+        <meta name="msapplication-TileImage" content="../images/ms-icons/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <title>Music Links</title>
         <style>
@@ -194,7 +194,7 @@
                     var WIDTH = canvas.width;
                     var HEIGHT = canvas.height;
                         
-                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barWidth = (WIDTH / bufferLength);
                     var barHeight;
                     var x = 0;
                         
@@ -217,7 +217,7 @@
                             var b = 50;
                         
                             ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                            ctx.fillRect(x, maxHeight+HEIGHT - barHeight, barWidth, barHeight);
+                            ctx.fillRect(x, HEIGHT - (barHeight/2), barWidth, (barHeight/2));
                         
                             x += barWidth + 1;
                         }
