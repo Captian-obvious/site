@@ -3,14 +3,14 @@ window.onload = function() {
     const canvasContainer = document.getElementById("CanvasContainer");
     const z = 0
     var audio = document.getElementById('audio');
-    var dur = document.getElementById('MediaPlayerControl-seekbar')
-    var image = document.getElementById('media-icon')
-    var dataimage = document.getElementById("MediaPlayerIcon-icon-play")
-    var button = document.getElementById("MediaPlayerIcon-icon-play")
-    var position = document.getElementById("time-position")
+    var dur = document.getElementById('MediaPlayerControl-seekbar');
+    var image = document.getElementById('media-icon');
+    var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
+    var button = document.getElementById("MediaPlayerIcon-icon-play");
+    var position = document.getElementById("time-position");
     file.onchange = function() {
         var files = this.files;
-        var colorValue = "#ff0000"
+        var colorValue = "#ff0000";
         dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src= SRC;
@@ -26,15 +26,15 @@ window.onload = function() {
         analyser.connect(context.destination);
                         
         analyser.fftSize = 512;
-        analyser.maxDecibels = -3
-        analyser.minDecibels = -120
+        analyser.maxDecibels = -3;
+        analyser.minDecibels = -120;
                         
         var bufferLength = analyser.frequencyBinCount;
         console.log(bufferLength);
                         
         var dataArray = new Uint8Array(bufferLength);
                     
-        var maxHeight = canvas.height/2
+        var maxHeight = canvas.height/2;
         var WIDTH = canvas.width;
         var HEIGHT = canvas.height;
                         
@@ -51,17 +51,19 @@ window.onload = function() {
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            var loud = dataArray[1]
+            var loud = dataArray[1];
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
 
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/4, 0, Math.PI * 2, false);
+            ctx.arc(centerX, centerY, loud/5, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = 5;
-            for (var i = 0; i < bufferLength; i++) 
+            for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
+                
+                ctx.rotate (x * (Math.PI*2) / 360);
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
@@ -69,7 +71,7 @@ window.onload = function() {
                 
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, HEIGHT - (barHeight/2), barWidth, (barHeight/2));
+                ctx.fillRect(x+centerX, centerY + loud + HEIGHT - (barHeight/5), barWidth, (barHeight/5));
                         
                 x += barWidth + 1;
             }
