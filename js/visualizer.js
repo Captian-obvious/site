@@ -58,12 +58,14 @@ window.onload = function() {
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
 
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/4, 0, Math.PI*2, false);
+            ctx.arc(centerX, centerY, loud/5, 0, Math.PI*2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = 5;
-            for (var i = 0; i < bufferLength; i++) {
-                barHeight = dataArray[i];
+            for (var i = 0; i < bufferLength; i++) 
+                barHeight = dataArray[i]
+                
+                canvas.rotate(x * Math.PI / 360)
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
@@ -71,7 +73,7 @@ window.onload = function() {
                 
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight);
+                ctx.fillRect(x, loud/5 + HEIGHT - barHeight/5, barWidth, barHeight/5);
                         
                 x += barWidth + 1;
             }
