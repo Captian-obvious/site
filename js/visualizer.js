@@ -65,7 +65,7 @@ window.onload = function() {
             for (var i = 0; i < bufferLength; i++) 
                 barHeight = dataArray[i]
                 
-                canvas.rotate(x * Math.PI / 180)
+                ctx.rotate(x * Math.PI / 180)
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
