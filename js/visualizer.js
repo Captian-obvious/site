@@ -65,7 +65,7 @@ window.onload = function() {
             for (var i = 0; i < bufferLength; i++) 
                 barHeight = dataArray[i]
                 
-                ctx.rotate(x * Math.PI / 180)
+  
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
@@ -73,7 +73,7 @@ window.onload = function() {
                 
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, loud/5 + HEIGHT - barHeight/5, barWidth, barHeight/5);
+                ctx.fillRect(x, HEIGHT - barHeight/2, barWidth, barHeight/2);
                         
                 x += barWidth + 1;
             }
