@@ -1,4 +1,4 @@
-window.onload = function() {
+Hwindow.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
     const z = 0
@@ -73,7 +73,7 @@ window.onload = function() {
                         
                 x += barWidth + 1;
             }
-        
+        }
         renderFrame();
         audio.play();
         dur.addEventListener("change", function() {
