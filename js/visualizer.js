@@ -1,4 +1,4 @@
-Hwindow.onload = function() {
+window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
     const z = 0
