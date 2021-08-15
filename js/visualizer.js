@@ -62,8 +62,6 @@ window.onload = function() {
             ctx.lineWidth = 5;
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
-                
-                ctx.rotate (x * (Math.PI*2) / 360);
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
@@ -71,11 +69,11 @@ window.onload = function() {
                 
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x+centerX, centerY + loud + HEIGHT - (barHeight/5), barWidth, (barHeight/5));
+                ctx.fillRect(x, HEIGHT - (barHeight/2), barWidth, (barHeight/2));
                         
                 x += barWidth + 1;
             }
-        }
+        
         renderFrame();
         audio.play();
         dur.addEventListener("change", function() {
