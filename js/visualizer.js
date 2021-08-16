@@ -68,7 +68,7 @@ window.onload = function() {
                 var b = 50;
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, HEIGHT - (barHeight/5), barWidth, barHeight/5);
+                ctx.fillRect(x, maxHeight + HEIGHT - (barHeight), barWidth, barHeight);
                         
                 x += barWidth + 1;
             }
