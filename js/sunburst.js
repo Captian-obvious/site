@@ -15,9 +15,10 @@ var dataArray = new Uint8Array(length)
 console.log(con)
 audio1.src = button.getAttribute("data-mediathumb-url");
 function renderFrame(){
-  requestAnimationFrame(renderFrame)
-  analyser.getByteFrequencyData(dataArray)
-  console.log(dataArray)
+  requestAnimationFrame(renderFrame);
+  analyser.getByteFrequencyData(dataArray);
+  console.log(dataArray);
+  x = 0;                   
 }
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
