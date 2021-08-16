@@ -2,7 +2,7 @@ const button = document.getElementById("MediaPlayerIcon-icon-play")
 const position = document.getElementById("time-position")
 const dur = document.getElementById("MediaPlayerControl-seekbar")
 var audio1 = new Audio()
-audio1.src = button1.getAttribute("data-mediathumb-url")
+audio1.src = button.getAttribute("data-mediathumb-url")
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
     this.className = "MediaPlayerIcon-icon-play";
