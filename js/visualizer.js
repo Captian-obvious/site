@@ -24,8 +24,10 @@ window.onload = function() {
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
         analyser.connect(context.destination);
+        
+        const fft_Size = 512
                         
-        analyser.fftSize = 512;
+        analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
         analyser.minDecibels = -120;
                         
@@ -60,16 +62,21 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = 5;
+            let angle_step = (Math.PI * 2)/fft_Size
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
                 var b = 50;
+                var angle = angle_step * i
+                
+                var h = HEIGHT / 2 + 100 * barHeight * Math.sin(angle)
+                var w = WIDTH / 2 + 100 * barHeight * Math.cos(angle)
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight);
-                        
+                ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+                
                 x += barWidth + 1;
             }
         }
