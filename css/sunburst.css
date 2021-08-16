@@ -39,3 +39,8 @@
 .MediaPlayerIcon-icon-pause:hover {
     background-image: url("../images/pause-icon-hover.svg");
 }
+#album {
+    width:150px;
+    height:150px;
+    background-image: url("../images/default/default-album-icon.png");
+}
