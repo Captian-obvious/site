@@ -1,0 +1,41 @@
+#MediaPlayerIcon-icon-play {
+    width:28px;
+    height:28px;
+    text-align:center;
+    border:none;
+    background-size:cover;
+    background-position:center;
+    position:fixed;
+    left:130px;
+    top:149px;
+}
+#time-position {
+    position: fixed;
+    left: 110px;
+    top: 132px;
+    width: 50px;
+    height: 5px;
+    text-align: center;
+    color: #980000;
+}
+#MediaPlayerIcon-icon-play:hover {
+    cursor:pointer;
+}
+#MediaPlayerControl-seekbar {
+    width: 120px;
+    height: 15px;
+    position: fixed;
+    top:153px;
+}
+.MediaPlayerIcon-icon-pause {
+    background-image: url("../images/pause-icon.svg");
+}
+.MediaPlayerIcon-icon-play {
+    background-image: url("../images/play-icon.svg");
+}
+.MediaPlayerIcon-icon-play:hover {
+    background-image: url("../images/play-icon-hover.svg");
+}
+.MediaPlayerIcon-icon-pause:hover {
+    background-image: url("../images/pause-icon-hover.svg");
+}
