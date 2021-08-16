@@ -18,7 +18,7 @@ function renderFrame(){
   requestAnimationFrame(renderFrame);
   analyser.getByteFrequencyData(dataArray);
   console.log(dataArray);
-  x = 0;                   
+  x = 0;
 }
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
