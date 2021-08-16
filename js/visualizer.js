@@ -71,11 +71,11 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
-                var h = HEIGHT / 2 + 100 * barHeight * Math.sin(angle)
-                var w = WIDTH / 2 + 100 * barHeight * Math.cos(angle)
+                var h = HEIGHT / 2 + loud * barHeight * Math.sin(angle)
+                var w = WIDTH / 2 + loud * barHeight * Math.cos(angle)
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+                ctx.fillRect(w, h, w, h)
                 
                 x += barWidth + 1;
             }
