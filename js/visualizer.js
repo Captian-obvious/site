@@ -75,7 +75,7 @@ window.onload = function() {
                 var w = WIDTH / 2 + loud * barHeight * Math.cos(angle)
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(w, h, w, h)
+                ctx.fillRect(w, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
                 x += barWidth + 1;
             }
