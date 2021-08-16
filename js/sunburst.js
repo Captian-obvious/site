@@ -2,8 +2,16 @@ const button = document.getElementById("MediaPlayerIcon-icon-play");
 const position = document.getElementById("time-position");
 const dur = document.getElementById("MediaPlayerControl-seekbar");
 var audio1 = new Audio();
-var audioContext = new (window.AudioContext || window.webkitAudioContext);
-console.log(audioContext);
+var context = new (window.AudioContext || window.webkitAudioContext);
+console.log(context);
+var analyser = context.createAnalyser()
+analyser.fftSize = 512
+analyser.maxDecibels = -3
+console.log(analyser)
+context.connect(analyser)
+analyser.connect(context.destination)
+console.log(context.connect(analyser))
+console.log(analyser.connect(context.destination))
 audio1.src = button.getAttribute("data-mediathumb-url");
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
