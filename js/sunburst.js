@@ -8,11 +8,16 @@ var analyser = context.createAnalyser()
 analyser.fftSize = 512
 analyser.maxDecibels = -3
 console.log(analyser)
-context.connect(analyser)
-analyser.connect(context.destination)
-console.log(context.connect(analyser))
-console.log(analyser.connect(context.destination))
+var con = analyser.connect(context.destination)
+var length = analyser.frequencyBinCount()
+console.log(length)
+var dataArray = new Uint8Array(length)
+console.log(con)
 audio1.src = button.getAttribute("data-mediathumb-url");
+function renderFrame(){
+  requestAnimationFrame(renderFrame)
+  
+}
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
     this.className = "MediaPlayerIcon-icon-play";
