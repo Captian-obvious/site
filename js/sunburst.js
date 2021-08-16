@@ -1,24 +1,34 @@
 const button = document.getElementById("MediaPlayerIcon-icon-play");
 const position = document.getElementById("time-position");
 const dur = document.getElementById("MediaPlayerControl-seekbar");
+const canvas = document.getElementById("canvas1")
 var audio1 = new Audio();
 var context = new (window.AudioContext || window.webkitAudioContext);
 console.log(context);
-var analyser = context.createAnalyser()
-analyser.fftSize = 512
-analyser.maxDecibels = -3
-console.log(analyser)
-var con = analyser.connect(context.destination)
-var length = analyser.frequencyBinCount
-console.log(length)
-var dataArray = new Uint8Array(length)
-console.log(con)
 audio1.src = button.getAttribute("data-mediathumb-url");
 function renderFrame(){
   requestAnimationFrame(renderFrame);
+  var analyser = context.createAnalyser()
+  analyser.fftSize = 512
+  analyser.maxDecibels = -3
+  console.log(analyser)
+  var length = analyser.frequencyBinCount
+  console.log(length)
+  var dataArray = new Uint8Array(length)
   analyser.getByteFrequencyData(dataArray);
   console.log(dataArray);
-  x = 0;
+  var audioSource = context.createMediaElementSource(audio1)
+  var x = 0;
+  HEIGHT = canvas.height
+  WIDTH = canvas.width
+  barWidth = WIDTH / analyser.fftSize
+  audioSource.connect(analyser)
+  var con = analyser.connect(context.destination)
+  console.log(con)
+  for (var i=1 i<length i++) do {
+    var barHeight = dataArray[i]
+    
+  }
 }
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
