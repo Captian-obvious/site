@@ -1,8 +1,10 @@
-const button = document.getElementById("MediaPlayerIcon-icon-play")
-const position = document.getElementById("time-position")
-const dur = document.getElementById("MediaPlayerControl-seekbar")
-var audio1 = new Audio()
-audio1.src = button.getAttribute("data-mediathumb-url")
+const button = document.getElementById("MediaPlayerIcon-icon-play");
+const position = document.getElementById("time-position");
+const dur = document.getElementById("MediaPlayerControl-seekbar");
+var audio1 = new Audio();
+var audioContext = new (window.AudioContext || window.webkitAudioContext);
+console.log(audioContext);
+audio1.src = button.getAttribute("data-mediathumb-url");
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
     this.className = "MediaPlayerIcon-icon-play";
@@ -16,8 +18,8 @@ button.addEventListener("click", function(){
   });
 });
 dur.addEventListener("change", function() {
-  audio1.currentTime = dur.value
-})
+  audio1.currentTime = dur.value;
+});
 audio1.addEventListener("timeupdate", function() {
   var curminutes = Math.floor(audio1.currentTime/60)
   var curseconds = Math.ceil(audio1.currentTime-(curminutes*60))
