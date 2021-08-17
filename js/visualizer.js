@@ -16,6 +16,7 @@ window.onload = function() {
         audio.src= SRC;
         audio.load();
         var context = new AudioContext();
+        console.log(context)
         var src = context.createMediaElementSource(audio);
         var analyser = context.createAnalyser();
         var canvas = document.getElementById("canvas");
@@ -33,6 +34,7 @@ window.onload = function() {
                         
         var bufferLength = analyser.frequencyBinCount;
         console.log(bufferLength);
+        console.log(analyser)
                         
         var dataArray = new Uint8Array(bufferLength);
                     
@@ -50,6 +52,8 @@ window.onload = function() {
             x = 0;
                         
             analyser.getByteFrequencyData(dataArray);
+            
+            console.log(dataArray)
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
