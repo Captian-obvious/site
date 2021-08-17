@@ -45,6 +45,12 @@ window.onload = function() {
         var barWidth = (WIDTH / bufferLength);
         var barHeight;
         var x = 0;
+        
+        var curminutes = Math.floor(audio.currentTime/60)
+        var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
+        var minutes = Math.floor(audio.duration/60)
+        var seconds = Math.ceil(audio.duration-(minutes*60))
+        position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
                         
         function renderFrame() {
             requestAnimationFrame(renderFrame);
@@ -76,7 +82,7 @@ window.onload = function() {
                 var angle = angle_step * i
                 
                 var h = HEIGHT / 2 + loud * barHeight * Math.sin(angle)
-                var w = WIDTH / 2 + loud * barHeight * Math.cos(angle)
+                var w = WIDTH / 2 + loud * barWidth * Math.cos(angle)
                 
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
@@ -90,13 +96,8 @@ window.onload = function() {
             audio.currentTime = dur.value
         })
         audio.addEventListener("timeupdate", function() {
-            var curminutes = Math.floor(audio.currentTime/60)
-            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
-            var minutes = Math.floor(audio.duration/60)
-            var seconds = Math.ceil(audio.duration-(minutes*60))
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
-            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
