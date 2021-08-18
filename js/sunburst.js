@@ -36,6 +36,7 @@ function renderFrame(){
   }
   requestAnimationFrame(renderFrame);
 }
+renderFrame()
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
     this.className = "MediaPlayerIcon-icon-play";
