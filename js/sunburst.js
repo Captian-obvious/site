@@ -27,7 +27,10 @@ function renderFrame(){
   console.log(con)
   for (var i=1; i<length; i++) do {
     var barHeight = dataArray[i]
-    ctx.fillStyle = 'rgb('+
+    var r = barHeight + (25 * (i/bufferLength));
+    var g = 250 * (i/bufferLength);
+    var b = 50;
+    ctx.fillStyle = 'rgb('+ r +',' + g + ', '+ b +')'
     ctx.fillRect(x, HEIGHT - barHeight, WIDTH/length, barHeight)
     
   }
