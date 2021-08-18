@@ -21,7 +21,7 @@ function renderFrame() {
   var ctx = canvas.getContext("2d")
   HEIGHT = canvas.height
   WIDTH = canvas.width
-  barWidth = WIDTH / analyser.fftSize
+  var barWidth = WIDTH/length
   audioSource.connect(analyser)
   analyser.connect(context.destination)
   for (var i=1; i<length; i++) {
@@ -30,8 +30,8 @@ function renderFrame() {
     var g = 250 * (i/length);
     var b = 50;
     ctx.fillStyle = 'rgb('+ r +',' + g + ', '+ b +')'
-    ctx.fillRect(x, HEIGHT - barHeight, WIDTH/length, barHeight)
-    
+    ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight)
+    x += barWidth
   }
   requestAnimationFrame(renderFrame);
 }
