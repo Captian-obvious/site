@@ -91,7 +91,7 @@ window.onload = function() {
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
-                x += barWidth;
+                x += barWidth + 1;
             }
         }
         renderFrame();
