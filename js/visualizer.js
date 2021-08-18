@@ -53,10 +53,6 @@ window.onload = function() {
             x = 0;
                         
             analyser.getByteFrequencyData(dataArray);
-            fft_Size = 512
-                        
-            analyser.fftSize = fft_Size;
-            bufferLength = analyser.frequencyBinCount;
             
             console.log(dataArray);
             var curminutes = Math.floor(audio.currentTime/60);
