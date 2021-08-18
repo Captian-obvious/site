@@ -87,6 +87,7 @@ window.onload = function() {
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 ctx.beginPath()
+                ctx.moveTo(centerX, centerY)
                 ctx.lineTo(w,h)
                 ctx.stroke()
                 
