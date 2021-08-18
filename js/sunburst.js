@@ -6,7 +6,7 @@ var audio1 = new Audio();
 var context = new (window.AudioContext || window.webkitAudioContext);
 console.log(context);
 audio1.src = button.getAttribute("data-mediathumb-url");
-function renderFrame(){
+function renderFrame() {
   var analyser = context.createAnalyser()
   analyser.fftSize = 512
   analyser.maxDecibels = -3
@@ -35,7 +35,6 @@ function renderFrame(){
   }
   requestAnimationFrame(renderFrame);
 }
-renderFrame()
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
     this.className = "MediaPlayerIcon-icon-play";
@@ -60,3 +59,4 @@ audio1.addEventListener("timeupdate", function() {
   dur.max = audio1.duration;
   position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
 });
+renderFrame()
