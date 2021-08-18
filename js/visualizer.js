@@ -26,7 +26,7 @@ window.onload = function() {
         const centerY = canvas.height / 2;
         analyser.connect(context.destination);
         
-        const fft_Size = 512
+        var fft_Size = 512
                         
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
@@ -53,13 +53,17 @@ window.onload = function() {
             x = 0;
                         
             analyser.getByteFrequencyData(dataArray);
+            fft_Size = 512
+                        
+            analyser.fftSize = fft_Size;
+            bufferLength = analyser.frequencyBinCount;
             
-            console.log(dataArray)
-            var curminutes = Math.floor(audio.currentTime/60)
-            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
-            var minutes = Math.floor(audio.duration/60)
-            var seconds = Math.ceil(audio.duration-(minutes*60))
-            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
+            console.log(dataArray);
+            var curminutes = Math.floor(audio.currentTime/60);
+            var curseconds = Math.ceil(audio.currentTime-(curminutes*60));
+            var minutes = Math.floor(audio.duration/60);
+            var seconds = Math.ceil(audio.duration-(minutes*60));
+            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds;
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
@@ -72,7 +76,7 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = 5;
-            let angle_step = (Math.PI * 2)/fft_Size
+            let angle_step = (Math.PI * 2)/bufferLength
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
@@ -87,7 +91,7 @@ window.onload = function() {
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
-                x += barWidth + 1;
+                x += barWidth;
             }
         }
         renderFrame();
