@@ -24,7 +24,7 @@ function renderFrame() {
   barWidth = WIDTH / analyser.fftSize
   audioSource.connect(analyser)
   analyser.connect(context.destination)
-  for (var i=1; i<length; i++) do {
+  for (var i=1; i<length; i++) {
     var barHeight = dataArray[i]
     var r = barHeight + (25 * (i/bufferLength));
     var g = 250 * (i/bufferLength);
