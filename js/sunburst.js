@@ -7,7 +7,6 @@ var context = new (window.AudioContext || window.webkitAudioContext);
 console.log(context);
 audio1.src = button.getAttribute("data-mediathumb-url");
 function renderFrame(){
-  requestAnimationFrame(renderFrame);
   var analyser = context.createAnalyser()
   analyser.fftSize = 512
   analyser.maxDecibels = -3
@@ -19,16 +18,20 @@ function renderFrame(){
   console.log(dataArray);
   var audioSource = context.createMediaElementSource(audio1)
   var x = 0;
+  var ctx = canvas.getContext("2d")
   HEIGHT = canvas.height
   WIDTH = canvas.width
   barWidth = WIDTH / analyser.fftSize
   audioSource.connect(analyser)
-  var con = analyser.connect(context.destination)
+  analyser.connect(context.destination)
   console.log(con)
-  for (var i=1 i<length i++) do {
+  for (var i=1; i<length; i++) do {
     var barHeight = dataArray[i]
+    ctx.fillStyle = 'rgb('+
+    ctx.fillRect(x, HEIGHT - barHeight, WIDTH/length, barHeight)
     
   }
+  requestAnimationFrame(renderFrame);
 }
 button.addEventListener("click", function(){
   if(this.className == 'MediaPlayerIcon-icon-pause'){
