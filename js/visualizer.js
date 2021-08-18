@@ -46,11 +46,6 @@ window.onload = function() {
         var barHeight;
         var x = 0;
         
-        var curminutes = Math.floor(audio.currentTime/60)
-        var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
-        var minutes = Math.floor(audio.duration/60)
-        var seconds = Math.ceil(audio.duration-(minutes*60))
-        position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
                         
         function renderFrame() {
             requestAnimationFrame(renderFrame);
@@ -60,6 +55,11 @@ window.onload = function() {
             analyser.getByteFrequencyData(dataArray);
             
             console.log(dataArray)
+            var curminutes = Math.floor(audio.currentTime/60)
+            var curseconds = Math.ceil(audio.currentTime-(curminutes*60))
+            var minutes = Math.floor(audio.duration/60)
+            var seconds = Math.ceil(audio.duration-(minutes*60))
+            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
