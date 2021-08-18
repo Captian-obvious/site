@@ -26,8 +26,8 @@ function renderFrame() {
   analyser.connect(context.destination)
   for (var i=1; i<length; i++) {
     var barHeight = dataArray[i]
-    var r = barHeight + (25 * (i/bufferLength));
-    var g = 250 * (i/bufferLength);
+    var r = barHeight + (25 * (i/length));
+    var g = 250 * (i/length);
     var b = 50;
     ctx.fillStyle = 'rgb('+ r +',' + g + ', '+ b +')'
     ctx.fillRect(x, HEIGHT - barHeight, WIDTH/length, barHeight)
