@@ -6,10 +6,11 @@ var audio1 = new Audio();
 var context = new (window.AudioContext || window.webkitAudioContext);
 console.log(context);
 var audioSource = context.createMediaElementSource(audio1)
+var analyser
 console.log(audioSource)
 audio1.src = button.getAttribute("data-mediathumb-url");
 function renderFrame() {
-  var analyser = context.createAnalyser()
+  analyser = context.createAnalyser()
   analyser.fftSize = 512
   analyser.maxDecibels = -3
   console.log(analyser)
