@@ -83,11 +83,6 @@ window.onload = function() {
                 var h = HEIGHT / 2 + loud * barHeight * Math.sin(angle)
                 var w = WIDTH / 2 + loud * barWidth * Math.cos(angle)
                 
-                ctx.beginPath()
-                ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")"
-                ctx.moveTo(centerX, centerY)
-                ctx.lineTo(w,h + loud - maxHeight)
-                ctx.stroke()
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
