@@ -70,7 +70,7 @@ window.onload = function() {
             ctx.arc(centerX, centerY, loud/5, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
-            ctx.lineWidth = 5;
+            ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
@@ -83,6 +83,9 @@ window.onload = function() {
                 var h = HEIGHT / 2 + loud * barHeight * Math.sin(angle)
                 var w = WIDTH / 2 + loud * barWidth * Math.cos(angle)
                 
+                ctx.beginPath()
+                ctx.moveTo(w,h - barHeight)
+                ctx.lineTo(w,h)
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
