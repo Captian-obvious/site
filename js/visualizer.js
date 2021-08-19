@@ -54,11 +54,9 @@ window.onload = function() {
                         
             analyser.getByteFrequencyData(dataArray);
             
-            var curminutes = Math.floor(audio.currentTime/60);
-            var curseconds = Math.ceil(audio.currentTime-(curminutes*60));
-            var minutes = Math.floor(audio.duration/60);
-            var seconds = Math.ceil(audio.duration-(minutes*60));
-            position.innerHTML = curminutes+":"+curseconds+" / "+minutes+":"+seconds;
+            var curtime = formatTime(audio.currentTime)
+            var time = formatTime(audio.duration);
+            position.innerHTML = curtime+" / "+time
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
