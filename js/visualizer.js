@@ -75,12 +75,12 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
-                var y = centerY + loud/7 * Math.sin(angle)
-                var x = centerX + loud/7 * Math.cos(angle)
+                var y = centerY + loud/10 * Math.sin(angle)
+                var x = centerX + loud/10 * Math.cos(angle)
                 
                 
-                var y1 = centerY + loud/7 * (barHeight/70) * Math.sin(angle)
-                var x1 = centerX + loud/7 * (barHeight/70) * Math.cos(angle)
+                var y1 = centerY + loud/10 * (barHeight/35) * Math.sin(angle)
+                var x1 = centerX + loud/10 * (barHeight/35) * Math.cos(angle)
                 
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -89,7 +89,7 @@ window.onload = function() {
                 ctx.stroke()
             }
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/5, 0, Math.PI * 2, false);
+            ctx.arc(centerX, centerY, loud/10, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
