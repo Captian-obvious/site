@@ -44,13 +44,13 @@ window.onload = function() {
                         
         var barWidth = (WIDTH / bufferLength);
         var barHeight;
-        var x = 0;
+        var x2 = 0;
         
                         
         function renderFrame() {
             requestAnimationFrame(renderFrame);
                         
-            x = 0;
+            x2 = 0;
                         
             analyser.getByteFrequencyData(dataArray);
             
@@ -81,20 +81,21 @@ window.onload = function() {
                 var angle = angle_step * i
                 
                 var y = HEIGHT / 2 + loud/5 * Math.sin(angle)
+                var x = WIDTH/2 + loud/5 * Math.cos(angle)
                 
                 
-                var h = HEIGHT / 2 + loud/5 * barHeight/2 * Math.sin(angle)
-                var w = WIDTH / 2 + loud/5 * barHeight/2 * Math.cos(angle)
+                var y1 = HEIGHT / 2 + loud/5 * barHeight/2 * Math.sin(angle)
+                var x1 = WIDTH / 2 + loud/5 * barHeight/2 * Math.cos(angle)
                 
                 ctx.beginPath()
-                ctx.moveTo(centerX, centerY)
+                ctx.moveTo(x, y)
                 ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")"
-                ctx.lineTo(w,h)
+                ctx.lineTo(x1,y1)
                 ctx.stroke()
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+                ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
-                x += barWidth + 1;
+                x2 += barWidth + 1;
             }
         }
         renderFrame();
