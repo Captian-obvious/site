@@ -65,14 +65,9 @@ window.onload = function() {
             var loud = dataArray[1];
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
-
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/5, 0, Math.PI * 2, false);
-            ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
-            ctx.fill();
-            ctx.lineWidth = barWidth;
+            
             let angle_step = (Math.PI * 2)/bufferLength
-            for (var i = 0; i < bufferLength; i++) {
+            for (var i=0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
                 var r = barHeight + (25 * (i/bufferLength));
@@ -92,6 +87,19 @@ window.onload = function() {
                 ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")"
                 ctx.lineTo(x1,y1)
                 ctx.stroke()
+            }
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, loud/5, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
+            ctx.fill();
+            ctx.lineWidth = barWidth;
+            for (var i = 0; i < bufferLength; i++) {
+                barHeight = dataArray[i];
+                                
+                var r = barHeight + (25 * (i/bufferLength));
+                var g = 250 * (i/bufferLength);
+                var b = 50;
+                
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
