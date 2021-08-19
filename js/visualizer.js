@@ -80,8 +80,11 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
+                var y = HEIGHT / 2 + loud/5 * Math.sin(angle)
+                
+                
                 var h = HEIGHT / 2 + loud/5 * barHeight/2 * Math.sin(angle)
-                var w = WIDTH / 2 + loud/5 * barWidth * Math.cos(angle)
+                var w = WIDTH / 2 + loud/5 * barHeight/2 * Math.cos(angle)
                 
                 ctx.beginPath()
                 ctx.moveTo(centerX, centerY)
