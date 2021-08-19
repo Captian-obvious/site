@@ -79,8 +79,8 @@ window.onload = function() {
                 var x = centerX + loud/10 * Math.cos(angle)
                 
                 
-                var y1 = centerY + loud/10 * (barHeight/30) * Math.sin(angle)
-                var x1 = centerX + loud/10 * (barHeight/30) * Math.cos(angle)
+                var y1 = centerY + loud/10 * (barHeight/35) * Math.sin(angle)
+                var x1 = centerX + loud/10 * (barHeight/35) * Math.cos(angle)
                 
                 ctx.beginPath()
                 ctx.moveTo(x, y)
