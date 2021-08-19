@@ -7,6 +7,7 @@ var context = new (window.AudioContext || window.webkitAudioContext);
 console.log(context);
 var audioSource = context.createMediaElementSource(audio1)
 var analyser
+var x
 console.log(audioSource)
 audio1.src = button.getAttribute("data-mediathumb-url");
 function renderFrame() {
@@ -19,7 +20,7 @@ function renderFrame() {
   var dataArray = new Uint8Array(length)
   analyser.getByteFrequencyData(dataArray);
   console.log(dataArray);
-  var x = 0;
+  x = 0;
   var ctx = canvas.getContext("2d")
   var HEIGHT = canvas.height
   var WIDTH = canvas.width
