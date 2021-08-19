@@ -80,11 +80,11 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
-                var h = HEIGHT / 2 + loud * barHeight * Math.sin(angle)
-                var w = WIDTH / 2 + loud * barWidth * Math.cos(angle)
+                var h = HEIGHT / 2 + loud/5 * barHeight * Math.sin(angle)
+                var w = WIDTH / 2 + loud/5 * barWidth * Math.cos(angle)
                 
                 ctx.beginPath()
-                ctx.moveTo(w,h - barHeight)
+                ctx.moveTo(centerX, centerY)
                 ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")"
                 ctx.lineTo(w,h)
                 ctx.stroke()
