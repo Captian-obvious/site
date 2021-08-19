@@ -54,7 +54,6 @@ window.onload = function() {
                         
             analyser.getByteFrequencyData(dataArray);
             
-            console.log(dataArray);
             var curminutes = Math.floor(audio.currentTime/60);
             var curseconds = Math.ceil(audio.currentTime-(curminutes*60));
             var minutes = Math.floor(audio.duration/60);
