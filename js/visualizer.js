@@ -50,7 +50,7 @@ window.onload = function() {
         function renderFrame() {
             requestAnimationFrame(renderFrame);
                         
-            x2 = 0;
+            // x2 = 0;
                         
             analyser.getByteFrequencyData(dataArray);
             
@@ -93,18 +93,18 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
-            for (var i = 0; i < bufferLength; i++) {
-                barHeight = dataArray[i];
+            //for (var i = 0; i < bufferLength; i++) {
+               // barHeight = dataArray[i];
                                 
-                var r = barHeight + (25 * (i/bufferLength));
-                var g = 250 * (i/bufferLength);
-                var b = 50;
+              //  var r = barHeight + (25 * (i/bufferLength));
+              //  var g = 250 * (i/bufferLength);
+              //  var b = 50;
                 
-                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+             //   ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+               // ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
-                x2 += barWidth + 1;
-            }
+            //   x2 += barWidth + 1;
+           //}
         }
         renderFrame();
         audio.play();
