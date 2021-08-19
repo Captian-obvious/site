@@ -136,4 +136,11 @@ window.onload = function() {
             button.className = "MediaPlayerIcon-icon-pause";
         });
     }
+    function formatTime(val) {
+        var min = math.floor((val/60))
+        var sec = Math.floor(val - (min * 60))
+        if (sec < 10) {sec = '0${sec}'}
+        return '${min}:${sec}'
+    }
 };
+
