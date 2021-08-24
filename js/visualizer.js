@@ -74,8 +74,8 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
-                var y = centerY + rad * Math.sin(angle)
-                var x = centerX + rad * Math.cos(angle)
+                var y = centerY + loud/10 * Math.sin(angle)
+                var x = centerX + loud/10 * Math.cos(angle)
                 
                 
                 var y1 = centerY + rad * (barHeight/50) * Math.sin(angle)
