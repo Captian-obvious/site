@@ -63,7 +63,7 @@ window.onload = function() {
             var loud = dataArray[1];
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
-            let rad = 3 + (loud/10)
+            let rad = (loud/10)
             
             let angle_step = (Math.PI * 2)/bufferLength
             for (var i=0; i < bufferLength; i++) {
@@ -74,8 +74,8 @@ window.onload = function() {
                 var b = 50;
                 var angle = angle_step * i
                 
-                var y = centerY + loud/10 * Math.sin(angle)
-                var x = centerX + loud/10 * Math.cos(angle)
+                var y = centerY + rad * Math.sin(angle)
+                var x = centerX + rad * Math.cos(angle)
                 
                 
                 var y1 = centerY + rad * (barHeight/50) * Math.sin(angle)
