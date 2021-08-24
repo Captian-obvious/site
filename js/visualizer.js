@@ -1,7 +1,3 @@
-import { p5 } from "p5.min.js"
-import { meydaAudioNode } from "meyda.min.js"
-const p5 = p5()
-const m = meyda()
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
@@ -87,9 +83,11 @@ window.onload = function() {
                 
                 var rgb = "rgb(" + r + "," + g + "," + b + ")"
                 
-                p5.stroke(rgb)
-                p5.strokeWeight(barWidth)
-                p5.line(x,y,x1,y1)
+                ctx.beginPath()
+                ctx.moveTo(x,y)
+                ctx.strokeStyle = rgb
+                ctx.lineTo(x1,y1)
+                ctx.stroke
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
