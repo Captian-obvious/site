@@ -83,11 +83,11 @@ window.onload = function() {
                 var y1 = centerY + rad * (barHeight/50) * Math.sin(angle)
                 var x1 = centerX + rad * (barHeight/50) * Math.cos(angle)
                 
-                ctx.beginPath()
-                ctx.moveTo(x, y)
-                ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")"
-                ctx.lineTo(x1,y1)
-                ctx.stroke()
+                var rgb = "rgb(" + r + "," + g + "," + b + ")"
+                
+                p5.line(x,y,x1,y1)
+                p5.stroke(rgb)
+                p5.strokeWeight(barWidth)
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
