@@ -1,5 +1,7 @@
-const p5 = require("p5.min.js")
-const m = require("meyda.min.js")
+import { p5 } from "p5.min.js"
+import { meydaAudioNode } from "meyda.min.js"
+const p5 = p5()
+const m = meyda()
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
