@@ -87,7 +87,7 @@ window.onload = function() {
                 ctx.stroke()
             }
             ctx.beginPath();
-            ctx.arc(centerX, centerY, loud/10, 0, Math.PI * 2, false);
+            ctx.arc(centerX, centerY, 1 + loud/10, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
