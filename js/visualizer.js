@@ -1,3 +1,5 @@
+const p5 = require("p5.min.js")
+const m = require("meyda.min.js")
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
