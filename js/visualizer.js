@@ -87,7 +87,7 @@ window.onload = function() {
                 ctx.moveTo(x,y)
                 ctx.strokeStyle = rgb
                 ctx.lineTo(x1,y1)
-                ctx.stroke
+                ctx.stroke()
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
