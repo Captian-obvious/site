@@ -85,9 +85,9 @@ window.onload = function() {
                 
                 var rgb = "rgb(" + r + "," + g + "," + b + ")"
                 
-                p5.line(x,y,x1,y1)
                 p5.stroke(rgb)
                 p5.strokeWeight(barWidth)
+                p5.line(x,y,x1,y1)
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
