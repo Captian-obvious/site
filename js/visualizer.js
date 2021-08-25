@@ -122,23 +122,23 @@ window.onload = function() {
         });
         button.addEventListener("click", function() {
             var aud = document.getElementById("audio")
-            if(this.className == 'MediaPlayerIcon-icon-pause'){
-                this.className = "MediaPlayerIcon-icon-play";
+            if(this.className == 'MediaPlayerIcon icon-pause'){
+                this.className = "MediaPlayerIcon icon-play";
                 aud.pause();
             }else{
-                this.className = "MediaPlayerIcon-icon-pause";
+                this.className = "MediaPlayerIcon icon-pause";
                 aud.play();
             };
             aud.addEventListener("ended", function() {
-                button.className = "MediaPlayerIcon-icon-play";
+                button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max
             });
         });
         audio.addEventListener("pause", function() {
-            button.className = "MediaPlayerIcon-icon-play";
+            button.className = "MediaPlayerIcon icon-play";
         });
         audio.addEventListener("play", function() {
-            button.className = "MediaPlayerIcon-icon-pause";
+            button.className = "MediaPlayerIcon icon-pause";
         });
     }
     function formatTime(val) {
