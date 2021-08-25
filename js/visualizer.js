@@ -96,15 +96,19 @@ window.onload = function() {
             ctx.lineWidth = barWidth;
             //for (var i = 0; i < bufferLength; i++) {
                // barHeight = dataArray[i];
+               // ctx.save()
+               // ctx.translate(centerX, centerY
                                 
-              //  var r = barHeight + (25 * (i/bufferLength));
-              //  var g = 250 * (i/bufferLength);
-              //  var b = 50;
+                //var r = barHeight + (25 * (i/bufferLength));
+              //var g = 250 * (i/bufferLength);
+              //var b = 50;
                 
-             //   ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               // ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+                //ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                // ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
                 
             //   x2 += barWidth + 1;
+            //   ctx.restore()
+            //  
            //}
         }
         renderFrame();
