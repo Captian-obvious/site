@@ -2,7 +2,8 @@ window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
     const z = 0
-    var audio = document.getElementById('audio');
+    var audio = new Audio();
+    console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
     var image = document.getElementById('album-image');
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
