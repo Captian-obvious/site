@@ -94,22 +94,24 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
-            //for (var i = 0; i < bufferLength; i++) {
-               // barHeight = dataArray[i];
-               // ctx.save()
-               // ctx.translate(centerX, centerY
-                                
-                //var r = barHeight + (25 * (i/bufferLength));
-              //var g = 250 * (i/bufferLength);
-              //var b = 50;
-                
-                //ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                // ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
-                
-            //   x2 += barWidth + 1;
-            //   ctx.restore()
-            //  
-           //}
+           /*
+           for (var i = 0; i < bufferLength; i++) {
+               barHeight = dataArray[i];
+               ctx.save()
+               ctx.translate(centerX, centerY)
+               ctx.rotate(i*((Math.PI*2)/bufferLength)
+
+               var r = barHeight + (25 * (i/bufferLength));
+               var g = 250 * (i/bufferLength);
+               var b = 50;
+
+               ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+               ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
+
+               x2 += barWidth + 1;
+               ctx.restore()
+           }
+           */
         }
         renderFrame();
         audio.play();
