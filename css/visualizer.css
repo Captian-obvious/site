@@ -67,6 +67,9 @@
     background-image: url("../images/pause-icon-hover.svg");
 }
 #album {
+    position: absolute;
+    top:10px;
+    left: 10px;
     width:150px;
     height:150px;
     background-image: url("../images/default/default-album-icon.png");
