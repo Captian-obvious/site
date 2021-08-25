@@ -124,15 +124,14 @@ window.onload = function() {
             dur.max = audio.duration;
         });
         button.addEventListener("click", function() {
-            var aud = document.getElementById("audio")
             if(this.className == 'MediaPlayerIcon icon-pause'){
                 this.className = "MediaPlayerIcon icon-play";
-                aud.pause();
+                audio.pause();
             }else{
                 this.className = "MediaPlayerIcon icon-pause";
-                aud.play();
+                audio.play();
             };
-            aud.addEventListener("ended", function() {
+            audio.addEventListener("ended", function() {
                 button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max
             });
