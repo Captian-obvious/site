@@ -33,8 +33,8 @@
     background-size:cover;
     background-position:center;
     position:fixed;
-    left:130px;
-    top:149px;
+    left:122px;
+    top:122px;
 }
 #time-position {
     position: fixed;
@@ -67,9 +67,9 @@
     background-image: url("../images/pause-icon-hover.svg");
 }
 #album {
-    position: absolute;
+    position: fixed;
     top:10px;
-    left: 10px;
+    left: 0px;
     width:150px;
     height:150px;
     background-image: url("../images/default/default-album-icon.png");
