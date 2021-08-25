@@ -34,8 +34,8 @@
 }
 #time-position {
     position: fixed;
-    left: 110px;
-    top: 130px;
+    left: 100px;
+    top: 127px;
     width: 100px;
     height: 5px;
     text-align: center;
@@ -48,7 +48,7 @@
     width: 120px;
     height: 15px;
     position: fixed;
-    top:134px;
+    top:135px;
 }
 .icon-pause {
     background-image: url("../images/pause-icon.svg");
