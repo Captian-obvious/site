@@ -25,7 +25,7 @@
     font-size:0.7em;
     color:#980000;
 }
-#MediaPlayerIcon-icon-play {
+.MediaPlayerIcon {
     width:28px;
     height:28px;
     text-align:center;
@@ -45,7 +45,7 @@
     text-align: center;
     color: #980000;
 }
-#MediaPlayerIcon-icon-play:hover {
+.MediaPlayerIcon:hover {
     cursor:pointer;
 }
 #MediaPlayerControl-seekbar {
@@ -54,16 +54,16 @@
     position: fixed;
     top:153px;
 }
-.MediaPlayerIcon-icon-pause {
+.icon-pause {
     background-image: url("../images/pause-icon.svg");
 }
-.MediaPlayerIcon-icon-play {
+.icon-play {
     background-image: url("../images/play-icon.svg");
 }
-.MediaPlayerIcon-icon-play:hover {
+.icon-play:hover {
     background-image: url("../images/play-icon-hover.svg");
 }
-.MediaPlayerIcon-icon-pause:hover {
+.icon-pause:hover {
     background-image: url("../images/pause-icon-hover.svg");
 }
 #album {
