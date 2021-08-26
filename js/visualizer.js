@@ -11,8 +11,8 @@ function read(obj) {
           console.log(error);
        }
     });
+    return tags
 }
-const id3 = window.jsmediatags
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
@@ -31,6 +31,7 @@ window.onload = function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src= SRC;
         audio.load();
+        var tags = read(audio)
         var context = new AudioContext();
         console.log(context)
         var src = context.createMediaElementSource(audio);
