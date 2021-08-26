@@ -1,4 +1,3 @@
-const tags = window.jsmediatags
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
