@@ -1,3 +1,5 @@
+import { jsmediatags } from "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
+const id3 = window.jsmediatags
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
