@@ -32,6 +32,13 @@ window.onload = function() {
         audio.src= SRC;
         audio.load();
         var tags = read(audio)
+        var picture = tags.tags.picture; // create reference to track art
+        var base64String = "";
+        for (var i = 0; i < picture.data.length; i++) {
+            base64String += String.fromCharCode(picture.data[i]);
+        }
+        var imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
+        image.src = imageUri
         var context = new AudioContext();
         console.log(context)
         var src = context.createMediaElementSource(audio);
