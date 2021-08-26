@@ -1,18 +1,3 @@
-import { jsmediatags } from "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
-function read(obj) {
-    var tags = {};
-    var id3 = window.jsmediatags
-    id3.read(obj.src, {
-       onSuccess: function(tag) {
-          tags = tag;
-       }, 
-       onError: function(error) {
-          // handle error
-          console.log(error);
-       }
-    });
-    return tags
-}
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
@@ -31,14 +16,6 @@ window.onload = function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src= SRC;
         audio.load();
-        var tags = read(audio)
-        var picture = tags.tags.picture; // create reference to track art
-        var base64String = "";
-        for (var i = 0; i < picture.data.length; i++) {
-            base64String += String.fromCharCode(picture.data[i]);
-        }
-        var imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
-        image.src = imageUri
         var context = new AudioContext();
         console.log(context)
         var src = context.createMediaElementSource(audio);
