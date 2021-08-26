@@ -1,4 +1,17 @@
 import { jsmediatags } from "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"
+function read(obj) {
+    var tags = {};
+    var id3 = window.jsmediatags
+    id3.read(obj.src, {
+       onSuccess: function(tag) {
+          tags = tag;
+       }, 
+       onError: function(error) {
+          // handle error
+          console.log(error);
+       }
+    });
+}
 const id3 = window.jsmediatags
 window.onload = function() {
     var file = document.getElementById("thefile");
