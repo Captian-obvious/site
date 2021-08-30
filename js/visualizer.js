@@ -111,7 +111,8 @@ window.onload = function() {
                
                ctx.restore()
            }
-        } */
+           */
+        }
         renderFrame();
         audio.play();
         dur.addEventListener("change", function() {
