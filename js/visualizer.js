@@ -65,7 +65,7 @@ window.onload = function() {
             ctx.fillStyle = "#980000";
             ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
             let rad = (loud/10)
-            
+            ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
             for (var i=0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
@@ -94,7 +94,6 @@ window.onload = function() {
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
-            ctx.lineWidth = barWidth;
             /*
            for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
