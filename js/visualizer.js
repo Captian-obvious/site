@@ -106,7 +106,7 @@ window.onload = function() {
                var b = 50;
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(0, HEIGHT - barHeight+loud/10, barWidth, barHeight+loud/10)
+               ctx.fillRect(centerX, HEIGHT - barHeight+loud/10, barWidth, barHeight+loud/10)
                
                ctx.restore()
            }
