@@ -95,7 +95,7 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
-            /*
+            
            for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
@@ -111,7 +111,6 @@ window.onload = function() {
                
                ctx.restore()
            }
-           */
         }
         renderFrame();
         audio.play();
