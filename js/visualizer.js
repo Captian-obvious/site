@@ -91,7 +91,7 @@ window.onload = function() {
                 ctx.stroke()
             }
             ctx.beginPath();
-            ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
+            ctx.arc(centerX, centerY,rad, Math.PI*2, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
@@ -107,7 +107,7 @@ window.onload = function() {
                var b = 50;
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(0, rad + barHeight, barWidth, barHeight)
+               ctx.fillRect(0, 0+(rad + (HEIGHT - barHeight)), barWidth, barHeight)
                
                ctx.restore()
            }
