@@ -95,7 +95,6 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
             ctx.lineWidth = barWidth;
-           /*
            for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
@@ -107,12 +106,11 @@ window.onload = function() {
                var b = 50;
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(x2, maxHeight + HEIGHT - barHeight, barWidth, barHeight)
-
-               x2 += barWidth + 1;
+               ctx.fillRect(0, HEIGHT+loud - barHeight, barWidth, barHeight+loud)
+               
                ctx.restore()
            }
-           */
+           
         }
         renderFrame();
         audio.play();
