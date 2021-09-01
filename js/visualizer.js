@@ -25,11 +25,11 @@ window.onload = function() {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
-        var g = context.createGain();
+        var gn = context.createGain();
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        analyser.connect(g);
-        g.connect(context.destination);
+        analyser.connect(gn);
+        gn.connect(context.destination);
         
         var fft_Size = 512;
                         
@@ -49,7 +49,6 @@ window.onload = function() {
                         
         var barWidth = (WIDTH / bufferLength);
         var barHeight;
-        var x2 = 0;
         
                         
         function renderFrame() {
@@ -66,10 +65,10 @@ window.onload = function() {
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             var loud = dataArray[1];
-            ctx.fillStyle = "#980000";
-            let rad = (loud/10)
+            let rad = (loud/10);
             ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
+            gn.gain.setValueAtTime(vol.value/100, audio.currentTime);
             for (var i=0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
