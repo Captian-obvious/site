@@ -30,7 +30,7 @@ window.onload = function() {
         const centerY = canvas.height / 2;
         analyser.connect(gn);
         gn.connect(context.destination);
-        
+        ctx.rotate(180*(Math.PI*2))
         var fft_Size = 512;
                         
         analyser.fftSize = fft_Size;
@@ -105,7 +105,7 @@ window.onload = function() {
                var b = 50;
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(0,0+rad, barWidth, barHeight/10)
+               ctx.fillRect(0,0+rad, barWidth, barHeight/5)
                
                ctx.restore()
             }
