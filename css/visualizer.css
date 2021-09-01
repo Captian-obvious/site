@@ -83,5 +83,5 @@
   height: 100%;
 }
 .icon-volume {
-    background_image=url(../images/default/volume_icon.svg);
+    background_image: url("../images/default/volume_icon.svg");
 }
