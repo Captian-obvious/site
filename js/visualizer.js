@@ -72,6 +72,7 @@ window.onload = function() {
             let rad = (loud/10)
             ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
+            g.gain.setValueAtTime(vol.value/100, audio.currentTime);
             for (var i=0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
@@ -121,9 +122,6 @@ window.onload = function() {
         audio.play();
         dur.addEventListener("change", function() {
             audio.currentTime = dur.value
-        })
-        vol.addEventListener("change", function() {
-            g.gain.setValueAtTime(vol.value/100, audio.currentTime);
         })
         setting.addEventListener("click", function() {
             if (vol.hidden == true){
