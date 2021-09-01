@@ -126,6 +126,13 @@ window.onload = function() {
         vol.addEventListener("change", function() {
             g.gain.setValueAtTime(vol.value/100, audio.currentTime);
         })
+        setting.addEventListener("click", function() {
+            if vol.hidden == true {
+                vol.hidden = false
+            }else{
+                vol.hidden = true
+            }
+        })
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
             dur.max = audio.duration;
