@@ -9,8 +9,8 @@ window.onload = function() {
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
     var button = document.getElementById("MediaPlayerIcon-icon-play");
     var position = document.getElementById("time-position");
-    var setting = document.getElementById("sound_options")
-    var vol = document.getElementById("volume")
+    var setting = document.getElementById("sound_options");
+    var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
         var colorValue = "#ff0000";
@@ -19,19 +19,19 @@ window.onload = function() {
         audio.src= SRC;
         audio.load();
         var context = new AudioContext();
-        console.log(context)
+        console.log(context);
         var src = context.createMediaElementSource(audio);
         var analyser = context.createAnalyser();
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
-        var g = context.createGain()
+        var g = context.createGain();
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
         analyser.connect(g);
         g.connect(context.destination);
         
-        var fft_Size = 512
+        var fft_Size = 512;
                         
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
@@ -50,7 +50,6 @@ window.onload = function() {
         var barWidth = (WIDTH / bufferLength);
         var barHeight;
         var x2 = 0;
-        vol.step = 0.25
         
                         
         function renderFrame() {
@@ -68,7 +67,6 @@ window.onload = function() {
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             var loud = dataArray[1];
             ctx.fillStyle = "#980000";
-            ctx.fillRect(0, 0, audio.currentTime/audio.duration*WIDTH, 2);
             let rad = (loud/10)
             ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
@@ -79,29 +77,28 @@ window.onload = function() {
                 var r = barHeight + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
                 var b = 50;
-                var angle = angle_step * i
+                var angle = angle_step * i;
                 
-                var y = centerY + rad * Math.sin(angle)
-                var x = centerX + rad * Math.cos(angle)
+                var y = centerY + rad * Math.sin(angle);
+                var x = centerX + rad * Math.cos(angle);
                 
                 
-                var y1 = centerY + rad * (barHeight/50) * Math.sin(angle)
-                var x1 = centerX + rad * (barHeight/50) * Math.cos(angle)
+                var y1 = centerY + rad * (barHeight/50) * Math.sin(angle);
+                var x1 = centerX + rad * (barHeight/50) * Math.cos(angle);
                 
-                var rgb = "rgb(" + r + "," + g + "," + b + ")"
+                var rgb = "rgb(" + r + "," + g + "," + b + ")";
                 
-                ctx.beginPath()
-                ctx.moveTo(x,y)
-                ctx.strokeStyle = rgb
-                ctx.lineTo(x1,y1)
-                ctx.stroke()
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                ctx.strokeStyle = rgb;
+                ctx.lineTo(x1,y1);
+                ctx.stroke();
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
-            /*
-           for (var i = 0; i < bufferLength; i++) {
+            for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
                ctx.translate(centerX, centerY)
@@ -112,11 +109,10 @@ window.onload = function() {
                var b = 50;
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(0, 0+(rad + (HEIGHT - barHeight)), barWidth, barHeight)
+               ctx.fillRect(centerX, centerY+(rad + (HEIGHT - barHeight)), barWidth, barHeight)
                
                ctx.restore()
-           }
-           */
+            }
         }
         renderFrame();
         audio.play();
@@ -124,7 +120,7 @@ window.onload = function() {
             audio.currentTime = dur.value
         })
         setting.addEventListener("click", function() {
-            if (vol.hidden == true){
+            if (vol.hidden == true) {
                 vol.hidden = false
             }else{
                 vol.hidden = true
