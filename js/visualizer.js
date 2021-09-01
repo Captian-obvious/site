@@ -28,7 +28,8 @@ window.onload = function() {
         var g = context.createGain()
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        analyser.connect(context.destination);
+        analyser.connect(g);
+        g.connect(context.destination
         
         var fft_Size = 512
                         
@@ -122,7 +123,7 @@ window.onload = function() {
             audio.currentTime = dur.value
         })
         vol.addEventListener("change", function() {
-            g.gain.setValueAtTime(vol.value, audio.currentTime);
+            g.gain.setValueAtTime(vol.value/100, audio.currentTime);
         })
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
