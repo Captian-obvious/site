@@ -91,4 +91,6 @@
     height: 15px;
     position: fixed;
     top:137px;
+    left: 160px;
+    -webkit-appearance: slider-vertical;
 }
