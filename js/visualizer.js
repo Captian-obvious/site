@@ -70,7 +70,6 @@ window.onload = function() {
             let rad = (loud/10)
             ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
-            g.gain.setValueAtTime(vol.value/100, audio.currentTime);
             for (var i=0; i < bufferLength; i++) {
                 barHeight = dataArray[i];
                                 
