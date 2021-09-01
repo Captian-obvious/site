@@ -29,7 +29,7 @@ window.onload = function() {
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
         analyser.connect(g);
-        g.connect(context.destination
+        g.connect(context.destination);
         
         var fft_Size = 512
                         
