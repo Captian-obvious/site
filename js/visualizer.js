@@ -30,7 +30,6 @@ window.onload = function() {
         const centerY = canvas.height / 2;
         analyser.connect(g);
         g.connect(context.destination);
-        vol.orient = "vertical"
         
         var fft_Size = 512
                         
@@ -127,7 +126,7 @@ window.onload = function() {
             g.gain.setValueAtTime(vol.value/100, audio.currentTime);
         })
         setting.addEventListener("click", function() {
-            if vol.hidden == true {
+            if (vol.hidden == true){
                 vol.hidden = false
             }else{
                 vol.hidden = true
