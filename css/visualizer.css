@@ -88,9 +88,9 @@
 }
 #volume {
     width: 15px;
-    height: 120px;
+    height: 70px;
     position: fixed;
     top:10px;
-    left: 175px;
+    left: 165px;
     -webkit-appearance: slider-vertical;
 }
