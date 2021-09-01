@@ -66,9 +66,35 @@ window.onload = function() {
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             var loud = dataArray[1];
             let rad = (loud/10);
-            ctx.lineWidth = barWidth;
             let angle_step = (Math.PI * 2)/bufferLength
             gn.gain.setValueAtTime(vol.value/100, audio.currentTime);
+            /*
+            ctx.lineWidth = barWidth;
+            let angle_step = (Math.PI * 2)/bufferLength
+            for (var i=0; i < bufferLength; i++) {
+                barHeight = dataArray[i];
+                                
+                var r = barHeight + (25 * (i/bufferLength));
+                var g = 250 * (i/bufferLength);
+                var b = 50;
+                var angle = angle_step * i;
+                
+                var y = centerY + rad * Math.sin(angle);
+                var x = centerX + rad * Math.cos(angle);
+                
+                
+                var y1 = centerY + rad * (barHeight/50) * Math.sin(angle);
+                var x1 = centerX + rad * (barHeight/50) * Math.cos(angle);
+                
+                var rgb = "rgb(" + r + "," + g + "," + b + ")";
+                
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                ctx.strokeStyle = rgb;
+                ctx.lineTo(x1,y1);
+                ctx.stroke();
+            }
+            */
             for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
