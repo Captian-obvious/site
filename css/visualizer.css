@@ -84,4 +84,5 @@
 }
 .icon-volume {
     background_image: url("../images/default/volume_icon.svg");
+    left:150px;
 }
