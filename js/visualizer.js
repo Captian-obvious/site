@@ -9,6 +9,8 @@ window.onload = function() {
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
     var button = document.getElementById("MediaPlayerIcon-icon-play");
     var position = document.getElementById("time-position");
+    var setting = document.getElementById("sound_options")
+    var vol = document.getElementById("volume")
     file.onchange = function() {
         var files = this.files;
         var colorValue = "#ff0000";
@@ -23,9 +25,11 @@ window.onload = function() {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
+        var g = context.createGain()
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        analyser.connect(context.destination);
+        analyser.connect(g);
+        g.connect(context.destination)
         
         var fft_Size = 512
                         
@@ -46,6 +50,7 @@ window.onload = function() {
         var barWidth = (WIDTH / bufferLength);
         var barHeight;
         var x2 = 0;
+        vol.step = 0.25
         
                         
         function renderFrame() {
@@ -116,6 +121,9 @@ window.onload = function() {
         audio.play();
         dur.addEventListener("change", function() {
             audio.currentTime = dur.value
+        })
+        vol.addEventListener("change", function() {
+            g.gain.setValueAtTime(vol.value, audio.currentTime);
         })
         audio.addEventListener("timeupdate", function() {
             dur.value=audio.currentTime; 
