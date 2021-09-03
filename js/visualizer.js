@@ -105,7 +105,7 @@ window.onload = function() {
 
                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                ctx.fillRect(0,0+rad, barWidth, barHeight/3.5)
-               ctx.fillStyle = "rgb(255,"+loud+",25)";
+               ctx.fillStyle = "rgb(255,"+loud+25+",180)";
                ctx.fillRect(0,0+rad+barHeight/3.5, barWidth, 1)
                ctx.restore()
             }
