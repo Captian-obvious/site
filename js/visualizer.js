@@ -97,7 +97,7 @@ window.onload = function() {
                barHeight = dataArray[i];
                ctx.save()
                ctx.translate(centerX, centerY)
-               ctx.rotate(89+i*((Math.PI*2)/bufferLength))
+               ctx.rotate(90+i*((Math.PI*2)/bufferLength))
 
                var r = barHeight + (25 * (i/bufferLength));
                var g = 250 * (i/bufferLength);
