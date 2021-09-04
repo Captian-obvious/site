@@ -28,7 +28,7 @@ window.onload = function() {
                 for (var i=0;i<data.length;i++){
                     str+=String.fromCharCode(data[i])
                 }
-                album.style.backgroundImage = "url(data:"+format+";base64"+window.btoa(str)+")"
+                album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")"
             },
             onError: function(error){
                 console.log(error);
