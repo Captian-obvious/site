@@ -1,3 +1,4 @@
+const id4 = window.jsmediatags
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
@@ -5,7 +6,7 @@ window.onload = function() {
     var audio = new Audio();
     console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
-    var image = document.getElementById('album-image');
+    var album = document.getElementById('album')
     var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
     var button = document.getElementById("MediaPlayerIcon-icon-play");
     var position = document.getElementById("time-position");
@@ -18,6 +19,21 @@ window.onload = function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src= SRC;
         audio.load();
+        id4.read(files[0],{
+            onSuccess: function(tag){
+                console.log(tag);
+                const data = tag.tags.picture.data;
+                const format = tag.tags.picture.format;
+                let str = "";
+                for (var i=0;i<data.length;i++){
+                    str+=String.fromCharCode(data[i])
+                }
+                album.style.backgroundImage = "url(data:"+format+";base64"+window.btoa(str)+")"
+            },
+            onError: function(error){
+                console.log(error);
+            },
+        });
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
