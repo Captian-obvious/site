@@ -69,6 +69,8 @@
     width:150px;
     height:150px;
     background-image: url("../images/default/default-album-icon.png");
+    background-size:cover;
+    background-position:center;
 }
 #CanvasContainer {
     width:100%;
