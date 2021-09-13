@@ -79,7 +79,7 @@ window.onload = function() {
                         
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            var loud = dataArray[1];
+            var loud = dataArray[0];
             let rad = (loud/10);
             gn.gain.setValueAtTime(vol.value/100, audio.currentTime);
             /*
