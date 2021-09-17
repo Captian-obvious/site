@@ -14,7 +14,7 @@ window.onload = function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-        coroutine(function(){
+        var run = coroutine(function(){
             for (var i=0, i < #files) {
                 var colorValue = "#ff0000";
                 dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
