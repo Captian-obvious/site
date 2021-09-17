@@ -14,14 +14,14 @@ window.onload = function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-        spawn(function(){
-            for (var i=0, i < #files) do {
+        coroutine(function(){
+            for (var i=0, i < #files) {
                 var colorValue = "#ff0000";
-                dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
+                dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
                 var SRC=dataimage.getAttribute("data-mediathumb-url");
                 audio.src = SRC;
                 audio.load();
-                id4.read(files[0],{
+                id4.read(files[i],{
                     onSuccess: function(tag){
                         console.log(tag);
                         const data = tag.tags.picture.data;
@@ -42,8 +42,8 @@ window.onload = function() {
                 });
                 audio.play();
                 audio.addEventListener("ended",function(){
-                dataimage.className = "MediaPlayerIcon icon-play";
-                i++
+                    dataimage.className = "MediaPlayerIcon icon-play";
+                    i++
                 });
             };
         });
