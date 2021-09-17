@@ -47,6 +47,7 @@ window.onload = function() {
                 });
             };
         });
+        run()
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
