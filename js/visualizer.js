@@ -14,7 +14,7 @@ window.onload = function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-        var run = coroutine(function(){
+        function* run(){
             for (var i=0, i < #files) {
                 var colorValue = "#ff0000";
                 dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
@@ -43,7 +43,7 @@ window.onload = function() {
                 audio.play();
                 audio.addEventListener("ended",function(){
                     dataimage.className = "MediaPlayerIcon icon-play";
-                    i++
+                    yield i++
                 });
             };
         });
@@ -171,6 +171,7 @@ window.onload = function() {
             audio.addEventListener("ended", function() {
                 button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max
+                run()
             });
         });
         audio.addEventListener("pause", function() {
