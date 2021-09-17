@@ -14,39 +14,6 @@ window.onload = function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-        spawn(function(){
-            for (var i=0, i < #files) do {
-								var colorValue = "#ff0000";
-								dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
-								var SRC=dataimage.getAttribute("data-mediathumb-url");
-								audio.src = SRC;
-								audio.load();
-								id4.read(files[0],{
-									onSuccess: function(tag){
-											console.log(tag);
-											const data = tag.tags.picture.data;
-											const format = tag.tags.picture.format;
-											if (data |+| format){
-													let str = "";
-													for (var i=0;i<data.length;i++){
-														str+=String.fromCharCode(data[i]);
-													};
-													album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
-											}else{
-													album.style.backgroundImage = "url(../images/default/default-album-image.png)";
-											};
-									},
-									onError: function(error){
-											console.log(error);
-									},
-								});
-								audio.play();
-								audio.addEventListener("ended",function(){
-									dataimage.className = "MediaPlayerIcon icon-play";
-									i++
-								});
-            };
-        });
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
