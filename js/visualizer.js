@@ -26,10 +26,10 @@ window.onload = function() {
                         console.log(tag);
                         const data = tag.tags.picture.data;
                         const format = tag.tags.picture.format;
-                        if (data |+| format){
+                        if (data && format){
                             let str = "";
-                            for (var i=0;i<data.length;i++){
-                                str+=String.fromCharCode(data[i]);
+                            for (var o=0;i<data.length;i++){
+                                str+=String.fromCharCode(data[o]);
                             };
                             album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
                         }else{
