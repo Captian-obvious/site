@@ -15,7 +15,7 @@ window.onload = function() {
     file.onchange = function() {
         var files = this.files;
         function* run(){
-            for (var i=0, i < #files) {
+            for (var i=0; i < #files; i++) {
                 var colorValue = "#ff0000";
                 dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
                 var SRC=dataimage.getAttribute("data-mediathumb-url");
@@ -41,10 +41,7 @@ window.onload = function() {
                     },
                 });
                 audio.play();
-                audio.addEventListener("ended",function(){
-                    dataimage.className = "MediaPlayerIcon icon-play";
-                    yield i++
-                });
+                yield
             };
         });
         run()
