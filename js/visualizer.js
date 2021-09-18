@@ -14,32 +14,33 @@ window.onload = function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-     
-                var colorValue = "#ff0000";
-                dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
-                var SRC=dataimage.getAttribute("data-mediathumb-url");
-                audio.src = SRC;
-                audio.load();
-                id4.read(files[i],{
-                    onSuccess: function(tag){
-                        console.log(tag);
-                        const data = tag.tags.picture.data;
-                        const format = tag.tags.picture.format;
-                        if (data && format) {
-                            let str = "";
-                            for (var o=0;o<data.length;o++){
-                                str+=String.fromCharCode(data[o]);
-                            };
-                            album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
-                        }else{
-                            album.style.backgroundImage = "url(../images/default/default-album-image.png)";
-                        };
-                    },
-                    onError: function(error){
-                        console.log(error);
-                    },
-                });
-                audio.play()
+        var colorValue = "#ff0000";
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
+        var SRC=dataimage.getAttribute("data-mediathumb-url");
+        audio.src = SRC;
+        audio.load();
+        id4.read(files[0],{
+        
+            onSuccess: function(tag){
+                console.log(tag);
+                const data = tag.tags.picture.data;
+                const format = tag.tags.picture.format;
+                if (data && format) {
+              
+                    let str = "";
+                    for (var o=0;o<data.length;o++) {
+                        str+=String.fromCharCode(data[o]);
+                    };
+                    album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
+                }else{
+                    album.style.backgroundImage = "url(../images/default/default-album-image.png)";
+                };
+            },
+            onError: function(error){
+                console.log(error);
+            },
+        });
+        audio.play()
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
@@ -162,8 +163,7 @@ window.onload = function() {
             };
             audio.addEventListener("ended", function() {
                 button.className = "MediaPlayerIcon icon-play";
-                dur.value = dur.max
-                run()
+                dur.value = dur.max;
             });
         });
         audio.addEventListener("pause", function() {
