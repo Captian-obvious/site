@@ -1,4 +1,5 @@
 const id4 = window.jsmediatags
+const meydaNode = window.meydaAnalyser
 window.onload = function() {
     var file = document.getElementById("thefile");
     const canvasContainer = document.getElementById("CanvasContainer");
