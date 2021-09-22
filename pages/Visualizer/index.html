@@ -22,26 +22,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.js"></script>
         <script src="../../meyda.min.js"></script>
+        <script src="../../js/visualizer.js"></script>
         <title>MediaPlayer-V2 - Visualizer</title>
     </head>
     <body>
-        <div id="media-container">
-            <input type="file" id="thefile" accept="audio/*">
-            <canvas id="canvas"></canvas>
-            <div id="main">
-                <div id="album">
-                    <div id="MediaPlayerControls">
-                        <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>
-                        <div id="sound_options" class="MediaPlayerIcon icon-volume">
-                            <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0">
-                        </div>
-                        <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">
-                        <div id="time-position"></div>
-                    </div>
-                </div>
-            </div>
-            <script src="../../js/visualizer.js"></script>
-            <noscript>Please Enable Javascript to use this page</noscript>
-        </div>
+        <div id="media-container"></div>
+        <noscript>Please Enable Javascript to use this page</noscript>
     </body>
 </html>
