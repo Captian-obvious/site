@@ -2,8 +2,22 @@ const id4 = window.jsmediatags
 const meydaNode = window.MeydaAnalyser
 window.onload = function() {
     var file = document.getElementById("thefile");
-    const canvasContainer = document.getElementById("CanvasContainer");
     const z = 0
+    var container = document.getElementById('Media-Container')
+    container.innerHTML = `
+    <canvas id="canvas"></canvas>
+    <div id="main">
+        <div id="album">
+            <div id="MediaPlayerControls">
+                <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>
+                <div id="sound_options" class="MediaPlayerIcon icon-volume">
+                <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0">
+            </div>
+            <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">
+            <div id="time-position"></div>
+        </div>
+    </div>
+    `
     var audio = new Audio();
     console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
