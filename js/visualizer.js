@@ -55,7 +55,7 @@ window.onload = function() {
                 };
                 if (title && artist) {
                     filetitle.textContent = artist+' - '+title
-                else
+                }else{
                     filetitle.textContent = 'Unknown Artist and or Unspecified title'
                 }
             },
