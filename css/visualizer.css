@@ -3,7 +3,7 @@
     text-align:center;
     color:#980000;
 }
-.custom-file-upload {
+#file-label {
     position: fixed;
     top: 0px;
     left: 0px;
