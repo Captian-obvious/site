@@ -3,12 +3,23 @@
     text-align:center;
     color:#980000;
 }
+.custom-file-upload {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    color: #980000;
+}
 #thefile {
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 100;
     color: #980000;
+    display:none;
 }
 #main {
     width:100%;
