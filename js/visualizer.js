@@ -54,9 +54,9 @@ window.onload = function() {
                     album.style.backgroundImage = "url(../images/default/default-album-image.png)";
                 };
                 if (title && artist) {
-                    filetitle.innerHTML = artist+' - '+title
+                    filetitle.textContent = artist+' - '+title
                 else
-                    filetitle.innerHTML = 'Unknown Artist and Unspecified title'
+                    filetitle.textContent = 'Unknown Artist and or Unspecified title'
                 }
             },
             onError: function(error){
