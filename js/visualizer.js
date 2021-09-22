@@ -2,6 +2,7 @@ const id4 = window.jsmediatags
 const meydaNode = window.MeydaAnalyser
 window.onload = function() {
     var file = document.getElementById("thefile");
+    var filetitle = document.getElementById("file-label")
     const z = 0
     var container = document.getElementById('media-container')
     container.innerHTML = `
@@ -40,6 +41,8 @@ window.onload = function() {
                 console.log(tag);
                 const data = tag.tags.picture.data;
                 const format = tag.tags.picture.format;
+                const title = tag.tags.title
+                const artist = tag.tags.artist
                 if (data && format) {
               
                     let str = "";
@@ -50,6 +53,11 @@ window.onload = function() {
                 }else{
                     album.style.backgroundImage = "url(../images/default/default-album-image.png)";
                 };
+                if (title && artist) {
+                    filetitle.innerHTML = artist+' - '+title
+                else
+                    filetitle.innerHTML = 'Unknown Artist and Unspecified title'
+                }
             },
             onError: function(error){
                 console.log(error);
