@@ -110,19 +110,7 @@ window.onload = function() {
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime+" / "+time
-            const meydaAnalyser = meyda.createMeydaAnalyzer(
-                {
-                    context,
-                    source: src,
-                    bufferSize: 512,
-                    featureExtractors: ["rms"],
-                    callback: (features) => {
-                        console.log(features);
-                    },
-                }
-            );
-            meydaAnalyser.start();
-            loud = meydaAnalyser.get("rms")*50
+            loud = dataArray[0];
             ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
