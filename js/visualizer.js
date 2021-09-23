@@ -41,8 +41,8 @@ window.onload = function() {
                 console.log(tag);
                 const data = tag.tags.picture.data;
                 const format = tag.tags.picture.format;
-                const title = tag.tags.title
-                const artist = tag.tags.artist
+                const title = tag.tags.title;
+                const artist = tag.tags.artist;
                 if (data && format) {
               
                     let str = "";
@@ -53,7 +53,7 @@ window.onload = function() {
                 }else{
                     album.style.backgroundImage = "url(../images/default/default-album-image.png)";
                 };
-                if (title && artist) {
+                if (title != "" && artist != "") {
                     filetitle.textContent = artist+' - '+title
                 }else{
                     filetitle.textContent = 'Unknown Artist and or Unspecified title'
