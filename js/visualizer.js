@@ -76,10 +76,10 @@ window.onload = function() {
                 context,
                 source: src,
                 bufferSize: 512,
-                featureExtractors: ["loudness"],
+                featureExtractors: ["rms"],
                 callback: (features) => {
                     console.log(features);
-                    loud = features.loudness
+                    loud = features.rms
                 },
             });
             meydaanalyser.start();
