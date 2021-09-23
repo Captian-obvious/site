@@ -1,5 +1,5 @@
 const id4 = window.jsmediatags
-const meyda = window.MeydaAnalyser
+const meyda = window.MeydaAnalyzer
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
