@@ -71,19 +71,21 @@ window.onload = function() {
         var loud = 0
         if (typeof meyda === "undefined") {
           console.log("Meyda could not be found! Have you included it?");
-        }else{
-            const meydaanalyser = meyda.createMeydaAnalyzer({
+          yield
+        }
+        const meydaanalyser = meyda.createMeydaAnalyzer(
+            {
                 context,
                 source: src,
                 bufferSize: 512,
                 featureExtractors: ["rms"],
                 callback: (features) => {
                     console.log(features);
-                    loud = features.rms
                 },
-            });
-            meydaanalyser.start();
-        }
+            }
+        );
+        meydaanalyser.start();
+        loud = meydaanalyser.get("rms")*50
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
@@ -93,6 +95,7 @@ window.onload = function() {
         analyser.connect(gn);
         gn.connect(context.destination);
         var fft_Size = 512;
+        
                         
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
