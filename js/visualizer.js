@@ -162,6 +162,7 @@ window.onload = function() {
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
             ctx.fillStyle = 'rgb('+loud+', '+loud+',0)';
             ctx.fill();
+            ctx.closePath();
         }
         renderFrame();
         audio.play();
