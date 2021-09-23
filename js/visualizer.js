@@ -87,6 +87,7 @@ window.onload = function() {
         console.log(analyser)
                         
         var dataArray = new Uint8Array(bufferLength);
+        var dataArray1 = new Uint8Array(bufferLength);
                     
         var maxHeight = canvas.height/2;
         var WIDTH = canvas.width;
@@ -102,8 +103,9 @@ window.onload = function() {
             // x2 = 0;
                         
             analyser.getByteFrequencyData(dataArray);
+            analyser.getByteTimeDomainData(dataArray1);
             
-            var curtime = formatTime(audio.currentTime)
+            var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime+" / "+time
                         
