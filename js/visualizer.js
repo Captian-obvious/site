@@ -141,6 +141,7 @@ window.onload = function() {
                 ctx.stroke();
             }
             */
+            ctx.clearRect(0,0,WIDTH,HEIGHT)
             for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
