@@ -1,5 +1,5 @@
 const id4 = window.jsmediatags
-const meydaNode = window.MeydaAnalyser
+const meyda = window.MeydaAnalyser
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
@@ -68,6 +68,22 @@ window.onload = function() {
         console.log(context);
         var src = context.createMediaElementSource(audio);
         var analyser = context.createAnalyser();
+        var loud = 0
+        if (typeof meyda === "undefined") {
+          console.log("Meyda could not be found! Have you included it?");
+        }else{
+            const meydaanalyser = meyda.createMeydaAnalyzer({
+                audioContext: context,
+                source: src,
+                bufferSize: 512,
+                featureExtractors: ["loudness"],
+                callback: (features) => {
+                    console.log(features);
+                    loud = features.loudness
+                },
+            });
+            meydaanalyser.start();
+        }
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
@@ -112,7 +128,6 @@ window.onload = function() {
             ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            var loud = dataArray[0];
             let rad = (loud/10);
             gn.gain.setValueAtTime(vol.value/100, audio.currentTime);
             /*
