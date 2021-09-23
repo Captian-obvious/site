@@ -73,7 +73,7 @@ window.onload = function() {
           console.log("Meyda could not be found! Have you included it?");
         }else{
             const meydaanalyser = meyda.createMeydaAnalyzer({
-                audioContext: context,
+                context,
                 source: src,
                 bufferSize: 512,
                 featureExtractors: ["loudness"],
