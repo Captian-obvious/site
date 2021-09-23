@@ -69,23 +69,6 @@ window.onload = function() {
         var src = context.createMediaElementSource(audio);
         var analyser = context.createAnalyser();
         var loud = 0
-        if (typeof meyda === "undefined") {
-          console.log("Meyda could not be found! Have you included it?");
-          yield
-        }
-        const meydaanalyser = meyda.createMeydaAnalyzer(
-            {
-                context,
-                source: src,
-                bufferSize: 512,
-                featureExtractors: ["rms"],
-                callback: (features) => {
-                    console.log(features);
-                },
-            }
-        );
-        meydaanalyser.start();
-        loud = meydaanalyser.get("rms")*50
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         src.connect(analyser);
@@ -127,7 +110,19 @@ window.onload = function() {
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime+" / "+time
-                      
+            const meydaAnalyser = meyda.createMeydaAnalyzer(
+                {
+                    context,
+                    source: src,
+                    bufferSize: 512,
+                    featureExtractors: ["rms"],
+                    callback: (features) => {
+                        console.log(features);
+                    },
+                }
+            );
+            meydaAnalyser.start();
+            loud = meydaAnalyser.get("rms")*50
             ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
