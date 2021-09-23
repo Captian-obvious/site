@@ -108,7 +108,8 @@ window.onload = function() {
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime+" / "+time
-                        
+                      
+            ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             var loud = dataArray[0];
@@ -141,7 +142,6 @@ window.onload = function() {
                 ctx.stroke();
             }
             */
-            ctx.clearRect(0,0,WIDTH,HEIGHT)
             for (var i = 0; i < bufferLength; i++) {
                barHeight = dataArray[i];
                ctx.save()
