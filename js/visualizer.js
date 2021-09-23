@@ -1,5 +1,5 @@
 const id4 = window.jsmediatags
-const meyda = require("meyda/dist/main")
+const meyda = window.meyda
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
