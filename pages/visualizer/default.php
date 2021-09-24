@@ -27,7 +27,7 @@
     </head>
     <body>
         <label for="thefile" id="file-label">
-            Choose Audio File (Date:<?php echo date("m/d/y") ?> )
+            Choose Audio File (Date: <?php echo date("m/d/y") ?>)
         </label>
         <input type="file" accept="audio/*" id="thefile"></input>
         <div id="media-container"></div>
