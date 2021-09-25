@@ -24,11 +24,11 @@
         <title>Music and Audio Visualizer</title>
     </head>
     <body>
-        @{
-            var date = Date("mm/dd/yy")
-        }
+        <%
+        var date = DateTime.Now()
+        %>
         <div id="date">
-            <p>@{return date}</p>
+            <p><% return date %></p>
         </div>
         <div id="media-container">
             <input type="file" id="thefile" accept="audio/*">
