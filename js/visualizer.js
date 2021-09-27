@@ -80,21 +80,6 @@ window.onload = function() {
         gn.connect(context.destination);
         var fft_Size = 512;
         
-        if (typeof meyda === "undefined") {
-            console.log("var 'meyda' Could Not Be Found, Have you included it?")
-        }else{
-            meydaAna = meyda.createMeydaAnalyzer({
-                audioContext: context,
-                source: src,
-                bufferSize: 512,
-                featureExtractors: ["rms"],
-                callback: (features) => {
-                    console.log(features);
-                    loud = features.rms
-                },
-            });
-            meydaAna.start();
-        }
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
         analyser.minDecibels = -120;
