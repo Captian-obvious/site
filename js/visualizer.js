@@ -84,8 +84,8 @@ window.onload = function() {
             console.log("var 'meyda' Could Not Be Found, Have you included it?")
         }else{
             meydaAna = meyda.createMeydaAnalyzer({
-                audioContext: audioContext,
-                source: source,
+                audioContext: context,
+                source: src,
                 bufferSize: 512,
                 featureExtractors: ["rms"],
                 callback: (features) => {
