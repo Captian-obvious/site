@@ -75,11 +75,26 @@ window.onload = function() {
         var gn = context.createGain();
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
+        const meydaAna= null
         analyser.connect(gn);
         gn.connect(context.destination);
         var fft_Size = 512;
         
-                        
+        if (typeof meyda === "undefined") {
+            console.log("var 'meyda' Could Not Be Found, Have you included it?")
+        }else{
+            meydaAna = meyda.createMeydaAnalyzer({
+                audioContext: audioContext,
+                source: source,
+                bufferSize: 512,
+                featureExtractors: ["rms"],
+                callback: (features) => {
+                    console.log(features);
+                    loud = features.rms
+                },
+            });
+            meydaAna.start();
+        }
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
         analyser.minDecibels = -120;
