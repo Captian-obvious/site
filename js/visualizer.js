@@ -75,7 +75,6 @@ window.onload = function() {
         var gn = context.createGain();
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        const meydaAna= null
         analyser.connect(gn);
         gn.connect(context.destination);
         var fft_Size = 512;
