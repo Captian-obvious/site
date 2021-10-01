@@ -1,5 +1,20 @@
 const id4 = window.jsmediatags
 const meyda = window.Meyda
+function calcRMS(arr){
+    // Map will return another array with each 
+    // element corresponding to the elements of
+    // the original array mapped according to
+    // some relation
+    let Squares = arr.map((val) => (val*val));
+  
+    // Function reduce the array to a value
+    // Here, all the elements gets added to the first
+    // element which acted as the accumulator initially.
+    let Sum = Squares.reduce((acum, val) => (acum + val));
+  
+    var Mean = Sum/arr.length;
+    return Math.sqrt(Mean);
+}
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
