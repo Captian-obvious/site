@@ -1,9 +1,5 @@
 const id4 = window.jsmediatags
 const meyda = window.Meyda
-function getRMS(array){
-    const rms = xs => Math.sqrt(xs.reduce((a, x) => (a + x * x)),0) / xs.length);
-    return rms
-}
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
