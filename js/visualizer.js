@@ -1,5 +1,22 @@
 const id4 = window.jsmediatags
-const meyda = window.Meyda
+
+function getRMS(arr) {
+    var square = 0;
+    var mean = 0;
+    var rms = 0;
+    var n = arr.length
+ 
+        // Calculate square.
+    for (var i = 0; i < n; i++) {
+        square += Math.pow(arr[i], 2);
+    }
+ 
+    // Calculate Mean.
+    mean = (square /  (n));
+    // Calculate Root.
+    rms =  Math.sqrt(mean);
+    return rms;
+}
 window.onload = function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
@@ -109,7 +126,7 @@ window.onload = function() {
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime+" / "+time
-            loud = dataArray[0];
+            loud = getRMS(dataArray);
             ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
