@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ LANGUAGE = "javascript"%>
+<%@LANGUAGE = "javascript"%>
 <html>
     <head></head>
     <body>
