@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%
-@LANGUAGE = "JavaScript"
+@LANGUAGE = "Javascript"
 %>
 <html>
     <head>
