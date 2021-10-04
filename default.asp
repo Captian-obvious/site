@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<%@ LANGUAGE = "javascript"%>
 <html>
     <head></head>
     <body>
         <%
-            Response.write("yes")
+            return "yes"
         %>
     </body>
 </html>
