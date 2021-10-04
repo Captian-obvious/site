@@ -19,7 +19,7 @@ function getRMS(arr) {
 }
 function calcRMSColor(rms) {
     let intermed = rms/100
-    let ret = intermed*25
+    let ret = intermed*235
     return ret
 }
 window.onload = function() {
