@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%
-<%@ page language="javascript" buffer="true" Explicit="true" runat="server" %>
+@ page language="javascript" buffer="true" Explicit="true" runat="server"
 %>
 <html>
     <head>
