@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%
-@LANGUAGE = "javascript"
+<%@ page language="javascript" buffer="true" Explicit="true" runat="server" %>
 %>
 <html>
     <head>
