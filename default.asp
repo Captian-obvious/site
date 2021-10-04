@@ -2,6 +2,8 @@
 <html>
     <head></head>
     <body>
-        <% language = "javascript" %>
+        <%
+            Response.write("yes")
+        %>
     </body>
 </html>
