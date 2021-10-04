@@ -6,7 +6,7 @@ function getRMS(arr) {
     var rms = 0;
     var n = arr.length
  
-        // Calculate square.
+    // Calculate square.
     for (var i = 0; i < n; i++) {
         square += Math.pow(arr[i], 2);
     }
@@ -19,7 +19,7 @@ function getRMS(arr) {
 }
 function calcRMSColor(rms) {
     let intermed = rms/100
-    let ret = intermed*210
+    let ret = intermed*150
     return ret
 }
 window.onload = function() {
