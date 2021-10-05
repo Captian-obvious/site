@@ -22,7 +22,7 @@ function calcRMSColor(rms) {
     let ret = intermed*150
     return ret
 }
-window.onload = function() {
+window.addEventListener('load',function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
     const z = 0
@@ -221,11 +221,11 @@ window.onload = function() {
         audio.addEventListener("play", function() {
             button.className = "MediaPlayerIcon icon-pause";
         });
-    }
+    };
     function formatTime(val) {
-        var min = Math.floor((val/60))
-        var sec = Math.floor(val - (min * 60))
-        if (sec < 10) {sec = '0'+sec}
-        return min+':'+sec
-    }
-}
+        var min = Math.floor((val/60));
+        var sec = Math.floor(val - (min * 60));
+        if (sec < 10) {sec = '0'+sec};
+        return min+':'+sec;
+    };
+});
