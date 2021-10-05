@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%
-@ page language="JavaScript" runat="server"
+@ page language="JScript" runat="server"
 %>
 <html>
     <head>
