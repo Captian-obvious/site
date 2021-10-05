@@ -185,26 +185,6 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+calcRMSColor(loud)+', '+calcRMSColor(loud)+',0)';
             ctx.fill();
             ctx.closePath();
-            const sliceWidth = WIDTH * 1.0 / bufferLength;
-            let x = 0-rad;
-            ctx.beginPath();
-            ctx.lineWidth = sliceWidth
-            ctx.strokeStyle = 'rgb(255,0,0)'
-            for(var i = 0; i < fft_Size; i++) {
-                const v = dataArray1[i]/128.0;
-                const y = v * HEIGHT/2;
-
-                if(i === 0) {
-                    ctx.moveTo(x, y);
-                }else{
-                    ctx.lineTo(x, y);
-                    x += sliceWidth;
-                }
-                ctx.lineTo(WIDTH, HEIGHT/2);
-                ctx.stroke();
-            }
-            x = 0
-            ctx.closePath()
         }
         renderFrame();
         audio.play();
