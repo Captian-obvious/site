@@ -186,10 +186,11 @@ window.onload = function() {
             ctx.fill();
             ctx.closePath();
             const sliceWidth = WIDTH * 1.0 / bufferLength;
-            let x = 0;
-
+            let x = 0-rad;
             ctx.beginPath();
-            for(var i = 0; i < bufferLength; i++) {
+            ctx.lineWidth = sliceWidth
+            ctx.strokeStyle = 'rgb(255,0,0)'
+            for(var i = 0; i < fft_Size; i++) {
                 const v = dataArray1[i]/128.0;
                 const y = v * HEIGHT/2;
 
@@ -202,6 +203,7 @@ window.onload = function() {
                 ctx.lineTo(WIDTH, HEIGHT/2);
                 ctx.stroke();
             }
+            x = 0
             ctx.closePath()
         }
         renderFrame();
