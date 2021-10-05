@@ -185,6 +185,24 @@ window.onload = function() {
             ctx.fillStyle = 'rgb('+calcRMSColor(loud)+', '+calcRMSColor(loud)+',0)';
             ctx.fill();
             ctx.closePath();
+            const sliceWidth = WIDTH * 1.0 / bufferLength;
+            let x = 0;
+
+            ctx.beginPath();
+            for(var i = 0; i < bufferLength; i++) {
+                const v = dataArray1[i]/128.0;
+                const y = v * HEIGHT/2;
+
+                if(i === 0) {
+                    ctx.moveTo(x, y);
+                }else{
+                    ctx.lineTo(x, y);
+                    x += sliceWidth;
+                }
+                ctx.lineTo(WIDTH, HEIGHT/2);
+                ctx.stroke();
+            }
+            ctx.closePath()
         }
         renderFrame();
         audio.play();
