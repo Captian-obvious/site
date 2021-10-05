@@ -110,7 +110,7 @@ window.onload = function() {
         console.log(analyser)
                         
         var dataArray = new Uint8Array(bufferLength);
-        var dataArray1 = new Uint8Array(bufferLength);
+        var dataArray1 = new Uint8Array(fft_Size);
                     
         var maxHeight = canvas.height/2;
         var WIDTH = canvas.width;
