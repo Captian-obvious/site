@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%
-@ page language="JScript" runat="server"
+@LANGUAGE = "JScript"
 %>
 <html>
     <head>
