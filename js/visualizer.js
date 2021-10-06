@@ -1,4 +1,4 @@
-const id4 = window.jsmediatags
+const id4 = window.mjs.id4
 
 function getRMS(arr) {
     var square = 0;
