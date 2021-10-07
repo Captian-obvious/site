@@ -1,4 +1,4 @@
-const id4 = window.jsmediatags
+const ID4 = window.jsmediatags
 
 function getRMS(arr) {
     var square = 0;
@@ -57,8 +57,7 @@ window.addEventListener('load',function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
-        id4.read(files[0],{
-        
+        ID4.read(files[0],{
             onSuccess: function(tag){
                 console.log(tag);
                 const data = tag.tags.picture.data;
