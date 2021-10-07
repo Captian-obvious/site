@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<%
-@LANGUAGE = "JScript"
-%>
 <html>
     <head>
         <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="../../images/apple-icons/apple-icon-57x57.png">
