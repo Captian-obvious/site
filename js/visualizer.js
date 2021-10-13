@@ -57,6 +57,12 @@ window.addEventListener('load',function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
+        if (filetitle.textContent != 'Unknown Artist and or Unspecified title') {
+            filetitle.textContent = 'Unknown Artist and or Unspecified title'
+        };
+        if (album.style.backgroundImage != "url(../images/default/default-album-image.png)") {
+            album.style.backgroundImage = "url(../images/default/default-album-image.png)";
+        }
         ID4.read(files[0],{
             onSuccess: function(tag){
                 console.log(tag);
@@ -64,9 +70,6 @@ window.addEventListener('load',function() {
                 const format = tag.tags.picture.format;
                 const title = tag.tags.title;
                 const artist = tag.tags.artist;
-                if (album.style.backgroundImage != "url(../images/default/default-album-image.png)") {
-                    album.style.backgroundImage = "url(../images/default/default-album-image.png)";
-                }
                 if (data && format != null) {
               
                     let str = "";
@@ -74,9 +77,6 @@ window.addEventListener('load',function() {
                         str+=String.fromCharCode(data[o]);
                     };
                     album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
-                };
-                if (filetitle.textContent != 'Unknown Artist and or Unspecified title') {
-                    filetitle.textContent = 'Unknown Artist and or Unspecified title'
                 };
                 if (title != "" && artist != "") {
                     filetitle.textContent = artist+' - '+title
