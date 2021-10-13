@@ -103,7 +103,6 @@ window.addEventListener('load',function() {
         var fft_Size = 512;
         
         analyser.fftSize = fft_Size;
-        analyser.smoothingTimeConstant = 0.8
         analyser.maxDecibels = -3;
         analyser.minDecibels = -120;
                         
