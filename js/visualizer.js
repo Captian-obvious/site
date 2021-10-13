@@ -1,4 +1,4 @@
-const ID4 = window.jsmediatags
+const ID3 = window.jsmediatags
 
 function getRMS(arr) {
     var square = 0;
@@ -57,13 +57,13 @@ window.addEventListener('load',function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
-        if (filetitle.textContent != 'Unknown Artist and or Unspecified title') {
-            filetitle.textContent = 'Unknown Artist and or Unspecified title'
+        if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
+            filetitle.textContent = 'Unknown Artist - '+files[0].name
         };
         if (album.style.backgroundImage != "url(../images/default/default-album-image.png)") {
             album.style.backgroundImage = "url(../images/default/default-album-image.png)";
         }
-        ID4.read(files[0],{
+        ID3.read(files[0],{
             onSuccess: function(tag){
                 console.log(tag);
                 const data = tag.tags.picture.data;
