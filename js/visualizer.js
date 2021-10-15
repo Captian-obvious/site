@@ -52,47 +52,40 @@ window.addEventListener('load',function() {
     var vol = document.getElementById("volume");
     file.onchange = function() {
         var files = this.files;
-        function* run(){
-            for (var i=0; i < files.length; i++) {
-                var colorValue = "#ff0000";
-                dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[i]));
-                var SRC=dataimage.getAttribute("data-mediathumb-url");
-                audio.src = SRC;
-                audio.load();
-                if (filetitle.textContent != 'Unknown Artist - '+files[i].name) {
-                    filetitle.textContent = 'Unknown Artist - '+files[i].name
-                };
-                if (album.style.backgroundImage != "url(../images/default/default-album-image.png)") {
-                    album.style.backgroundImage = "url(../images/default/default-album-image.png)";
-                }
-                ID3.read(files[i],{
-                    onSuccess: function(tag){
-                        console.log(tag);
-                        const data = tag.tags.picture.data;
-                        const format = tag.tags.picture.format;
-                        const title = tag.tags.title;
-                        const artist = tag.tags.artist;
-                        if (data && format != null) {
-
-                            let str = "";
-                            for (var o=0;o<data.length;o++) {
-                                str+=String.fromCharCode(data[o]);
-                            };
-                            album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
-                        };
-                        if (title != "" && artist != "") {
-                            filetitle.textContent = artist+' - '+title
-                        };
-                    },
-                    onError: function(error){
-                        console.log(error);
-                    },
-                });
-                audio.play()
-                yield
-            }
+        var colorValue = "#ff0000";
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
+        var SRC=dataimage.getAttribute("data-mediathumb-url");
+        audio.src = SRC;
+        audio.load();
+        if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
+            filetitle.textContent = 'Unknown Artist - '+files[0].name
+        };
+        if (album.style.backgroundImage != "url(../images/default/default-album-image.png)") {
+            album.style.backgroundImage = "url(../images/default/default-album-image.png)";
         }
-        run()
+        ID3.read(files[0],{
+            onSuccess: function(tag){
+                console.log(tag);
+                const data = tag.tags.picture.data;
+                const format = tag.tags.picture.format;
+                const title = tag.tags.title;
+                const artist = tag.tags.artist;
+                if (data && format != null) {
+                    let str = "";
+                    for (var o=0;o<data.length;o++) {
+                        str+=String.fromCharCode(data[o]);
+                    };
+                    album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
+                };
+                if (title != "" && artist != "") {
+                    filetitle.textContent = artist+' - '+title
+                };
+            },
+            onError: function(error){
+                console.log(error);
+            },
+        });
+        audio.play()
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
