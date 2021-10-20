@@ -2,7 +2,7 @@ const ID3 = window.jsmediatags
 const sin = Math.sin
 const π = Math.PI
 
-function ease(btoa, t) {
+function ease(t) {
     return sin(t * π/2)
 }
 
