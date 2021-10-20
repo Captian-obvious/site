@@ -41,12 +41,12 @@
     background-position:center;
     position:fixed;
     left:142px;
-    top:152px;
+    top:142px;
 }
 #time-position {
     position: fixed;
     left: 120px;
-    top: 136px;
+    top: 126px;
     width: 100px;
     height: 5px;
     text-align: center;
@@ -59,7 +59,7 @@
     width: 140px;
     height: 15px;
     position: fixed;
-    top:157px;
+    top:147px;
 }
 .icon-pause {
     background-image: url("../images/pause-icon.svg");
@@ -75,7 +75,7 @@
 }
 #album {
     position: fixed;
-    top:10px;
+    top:0px;
     left: 0px;
     width:170px;
     height:170px;
@@ -103,7 +103,7 @@
     width: 15px;
     height: 70px;
     position: fixed;
-    top:80px;
+    top:70px;
     left: 176px;
     -webkit-appearance: slider-vertical;
 }
