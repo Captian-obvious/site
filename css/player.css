@@ -40,13 +40,13 @@
     background-size:cover;
     background-position:center;
     position:fixed;
-    left:132px;
-    top:142px;
+    left:142px;
+    top:152px;
 }
 #time-position {
     position: fixed;
-    left: 110px;
-    top: 126px;
+    left: 120px;
+    top: 136px;
     width: 100px;
     height: 5px;
     text-align: center;
@@ -56,7 +56,7 @@
     cursor:pointer;
 }
 #MediaPlayerControl-seekbar {
-    width: 130px;
+    width: 140px;
     height: 15px;
     position: fixed;
     top:147px;
@@ -77,8 +77,8 @@
     position: fixed;
     top:10px;
     left: 0px;
-    width:160px;
-    height:160px;
+    width:170px;
+    height:170px;
     background-image: url("../images/default/default-album-icon.png");
     background-size:cover;
     background-position:center;
@@ -103,7 +103,7 @@
     width: 15px;
     height: 70px;
     position: fixed;
-    top:70px;
-    left: 166px;
+    top:80px;
+    left: 176px;
     -webkit-appearance: slider-vertical;
 }
