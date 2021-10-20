@@ -59,7 +59,7 @@
     width: 140px;
     height: 15px;
     position: fixed;
-    top:147px;
+    top:157px;
 }
 .icon-pause {
     background-image: url("../images/pause-icon.svg");
@@ -97,7 +97,7 @@
 }
 .icon-volume {
     background-image: url("../images/default/volume_icon.svg");
-    left:161px;
+    left:171px;
 }
 #volume {
     width: 15px;
