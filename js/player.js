@@ -40,7 +40,8 @@ window.addEventListener('load',function() {
             <div id="MediaPlayerControls">
                 <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>
                 <div id="sound_options" class="MediaPlayerIcon icon-volume">
-                <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0">
+                    <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0" />
+                </div>
             </div>
             <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">
             <div id="time-position"></div>
