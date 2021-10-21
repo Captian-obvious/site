@@ -22,3 +22,9 @@
     font-size:0.7em;
     color:#980000;
 }
+#link3 {
+    color:#980000;
+}
+#link3:hover {
+    color:#ff0000;
+}
