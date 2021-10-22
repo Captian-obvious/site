@@ -97,7 +97,8 @@ window.addEventListener('load',function() {
                     for (var o=0;o<data.length;o++) {
                         str+=String.fromCharCode(data[o]);
                     };
-                    album.style.backgroundImage = "url(data:"+format+";base64,"+window.btoa(str)+")";
+                    var url = "data:"+format+";base64,"+window.btoa(str)
+                    album.style.backgroundImage = "url("+url+")";
                 };
                 if (title != "" && artist != "") {
                     filetitle.textContent = artist+' - '+title
