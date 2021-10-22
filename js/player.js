@@ -9,8 +9,8 @@ function ease(t) {
 function draw(src){
     var myRectangle = new Image();
     myRectangle.src = src;
-    myRectangle.onload = function(){}
-    return myRectangle
+    myRectangle.onload = function(){};
+    return myRectangle;
 }
 
  function animate(myRectangle, canvas, context, startTime) {
@@ -21,7 +21,7 @@ function draw(src){
      var nextY = amplitude * sin(time * 2 * π / period) + centerY;
      myRectangle.Y = nextY;
      context.clearRect(0, 0, canvas.width, canvas.height);
-     context.drawImage(myRectangle)
+     context.drawImage(myRectangle);
 }
 
 function getRMS(arr) {
