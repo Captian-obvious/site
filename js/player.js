@@ -9,7 +9,7 @@ function ease(t) {
  function animate(rect,src, canvas, context, startTime) {
      var myRectangle = new Image();
      myRectangle.src = src;
-     myRectangle.onload = function()
+     myRectangle.onload = function(){}
      var time = (new Date()).getTime() - startTime;
      var amplitude = 150;
      var period = 2000;
