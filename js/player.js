@@ -6,19 +6,22 @@ function ease(t) {
     return sin(t * π/2)
 }
 
- function DrawAndAnimate(src, canvas, context, startTime) {
-     var myRectangle = new Image();
-     myRectangle.src = src;
-     myRectangle.onload = function(){}
+function draw(src){
+    var myRectangle = new Image();
+    myRectangle.src = src;
+    myRectangle.onload = function(){}
+    return myRectangle
+}
+
+ function animate(myRectangle, canvas, context, startTime) {
      var time = (new Date()).getTime() - startTime;
      var amplitude = 150;
      var period = 5000;
-     var centerX = canvas.width / 2 - myRectangle.width / 2;
-     var nextX = amplitude * Math.sin(time * 2 * π / period) + centerX;myRectangle.x = nextX;
+     var centerY = canvas.height / 2 - myRectangle.height / 2;
+     var nextY = amplitude * sin(time * 2 * π / period) + centerY;
+     myRectangle.Y = nextY;
      context.clearRect(0, 0, canvas.width, canvas.height);
-     context.drawImage(myRectangle, nextX, myRectangle.height)
-     
-     // request new frame
+     context.drawImage(myRectangle)
 }
 
 function getRMS(arr) {
@@ -85,6 +88,7 @@ window.addEventListener('load',function() {
         if (album.style.backgroundImage != "url(../../images/default/default-album-image.png)") {
             album.style.backgroundImage = "url(../../images/default/default-album-image.png)";
         }
+        var animatedImage = null
         ID3.read(files[0],{
             onSuccess: function(tag){
                 console.log(tag);
@@ -98,6 +102,7 @@ window.addEventListener('load',function() {
                         str+=String.fromCharCode(data[o]);
                     };
                     var url = "data:"+format+";base64,"+window.btoa(str)
+                    animatedImage = draw(url)
                     album.style.backgroundImage = "url("+url+")";
                 };
                 if (title != "" && artist != "") {
@@ -150,6 +155,8 @@ window.addEventListener('load',function() {
                         
             analyser.getByteFrequencyData(dataArray);
             analyser.getByteTimeDomainData(dataArray1);
+            
+            animate(animatedImage, canvas, ctx, new Date().getTime())
             
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
