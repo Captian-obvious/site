@@ -6,6 +6,20 @@ function ease(t) {
     return sin(t * π/2)
 }
 
+ function animate(rect,src, canvas, context, startTime) {
+     var myRectangle = new Image();
+     myRectangle.src = src;
+     myRectangle.onload = function()
+     var time = (new Date()).getTime() - startTime;
+     var amplitude = 150;
+     var period = 2000;
+     var centerX = canvas.width / 2 - rect.width / 2;
+     var nextX = amplitude * Math.sin(time * 2 * Math.PI / period) + centerX;myRectangle.x = nextX;
+     context.clearRect(0, 0, canvas.width, canvas.height);
+     
+     // request new frame
+}
+
 function getRMS(arr) {
     var square = 0;
     var mean = 0;
