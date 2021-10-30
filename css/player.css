@@ -60,6 +60,7 @@
     height: 15px;
     position: fixed;
     top:167px;
+    color: #980000;
 }
 .icon-pause {
     background-image: url("../images/pause-icon.svg");
@@ -106,4 +107,5 @@
     top:90px;
     left: 196px;
     -webkit-appearance: slider-vertical;
+    color: #980000;
 }
