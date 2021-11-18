@@ -1,4 +1,4 @@
-const ID3 = window.lib.jsmediatags
+const ID3 = import('https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.js');
 const sin = Math.sin
 const π = Math.PI
 
