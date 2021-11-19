@@ -70,7 +70,7 @@ window.addEventListener('load', function() {
         </div>
     </div>
     `
-    replaceurl("player=' + urlParameter");
+    replaceurl('player=' + urlParameter);
     var audio = new Audio();
     console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
@@ -121,16 +121,7 @@ window.addEventListener('load', function() {
                 console.log(error);
             },
         });
-        audio.play()
-        urlParameter = true
-        if (newArtist!=null && newTitle!=null) { 
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter + '&input=' + newTitle + ' - ' + newArtist;
-            window.history.pushState({ path: newurl }, '', newurl);
-        }
-        if (newArtist==null && newTitle==null){
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
-            window.history.pushState({ path: newurl }, '', newurl);
-        };
+        audio.play();
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
