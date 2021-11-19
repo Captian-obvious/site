@@ -123,7 +123,7 @@ window.addEventListener('load', function(){
         if newArtist!=null && newTitle!=null { 
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter + '&input=' + newTitle + ' - ' + newArtist;
             window.history.pushState({ path: newurl }, '', newurl);
-        else
+        }else{
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
             window.history.pushState({ path: newurl }, '', newurl);
         };
