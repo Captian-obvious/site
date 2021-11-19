@@ -2,6 +2,8 @@ const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
 var urlPerameter1 = false;
+var location = document.location
+location.replace(location.pathName+"?player=true")
 
 function ease(t) {
     return sin(t * π/2);
@@ -50,8 +52,6 @@ function calcRMSColor(rms) {
 window.addEventListener('load',function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
-    var location = document.location
-    location.replace(location.pathName+"?player=true")
     const z = 0
     var container = document.getElementById('media-container')
     container.innerHTML = `
