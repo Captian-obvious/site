@@ -87,8 +87,7 @@ window.addEventListener('load', function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
-        var newTitle = null;
-        var newArtist = null;
+        var input = files[0].name;
         if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
             filetitle.textContent = 'Unknown Artist - '+files[0].name
         };
@@ -103,8 +102,7 @@ window.addEventListener('load', function() {
                 const format = tag.tags.picture.format;
                 const title = tag.tags.title;
                 const artist = tag.tags.artist;
-                newTitle = title
-                newArtist = artist
+                input = artist + " - " + title
                 if (data && format != null) {
                     let str = "";
                     for (var o=0;o<data.length;o++) {
@@ -123,7 +121,7 @@ window.addEventListener('load', function() {
         });
         replaceurl("player=true&");
         if (newTitle && newArtist) {
-            replaceurl("player=true&input="+newArtist+" - "+newTitle)
+            replaceurl("player=true&?input=" + input)
         };
         audio.play();
         var context = new AudioContext();
