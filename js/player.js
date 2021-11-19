@@ -121,6 +121,7 @@ window.addEventListener('load', function() {
                 console.log(error);
             },
         });
+        replaceurl("?player=true");
         audio.play();
         var context = new AudioContext();
         console.log(context);
