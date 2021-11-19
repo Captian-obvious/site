@@ -51,7 +51,6 @@ window.addEventListener('load',function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
     const z = 0
-    urlParameter = true
     var container = document.getElementById('media-container')
     container.innerHTML = `
     <canvas id="canvas"></canvas>
@@ -86,12 +85,14 @@ window.addEventListener('load',function() {
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
+        var newTitle, newArtist = null,null
         if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
             filetitle.textContent = 'Unknown Artist - '+files[0].name
         };
         if (album.style.backgroundImage != "url(../../images/default/default-album-image.png)") {
             album.style.backgroundImage = "url(../../images/default/default-album-image.png)";
         }
+        
         ID3.read(files[0],{
             onSuccess: function(tag){
                 console.log(tag);
@@ -99,6 +100,8 @@ window.addEventListener('load',function() {
                 const format = tag.tags.picture.format;
                 const title = tag.tags.title;
                 const artist = tag.tags.artist;
+                newTitle = title
+                newArtist = artist
                 if (data && format != null) {
                     let str = "";
                     for (var o=0;o<data.length;o++) {
@@ -116,6 +119,14 @@ window.addEventListener('load',function() {
             },
         });
         audio.play()
+        urlParameter = true
+        if newArtist!=null && newTitle!=null {
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1 + "&input='"+newTitle+" - "+newArtist;
+            window.history.pushState({ path: newurl }, '', newurl);
+        else
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
+            window.history.pushState({ path: newurl }, '', newurl);
+        };
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
