@@ -119,10 +119,7 @@ window.addEventListener('load', function() {
                 console.log(error);
             },
         });
-        replaceurl("player=true&");
-        if (newTitle && newArtist) {
-            replaceurl("player=true&?input=" + input)
-        };
+        replaceurl("player=true&?input=" + input);
         audio.play();
         var context = new AudioContext();
         console.log(context);
