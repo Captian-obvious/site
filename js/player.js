@@ -1,7 +1,7 @@
 const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
-var urlParameter1 = false;
+var urlParameter = false;
 
 function ease(t) {
     return sin(t * π/2);
@@ -67,7 +67,7 @@ window.addEventListener('load',function() {
         </div>
     </div>
     `
-    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
     window.history.pushState({ path: newurl }, '', newurl);
     var audio = new Audio();
     console.log(audio)
@@ -121,10 +121,10 @@ window.addEventListener('load',function() {
         audio.play()
         urlParameter = true
         if newArtist!=null && newTitle!=null {
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1 + "&input='"+newTitle+" - "+newArtist;
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter + "&input='"+newTitle+" - "+newArtist;
             window.history.pushState({ path: newurl }, '', newurl);
         else
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
             window.history.pushState({ path: newurl }, '', newurl);
         };
         var context = new AudioContext();
