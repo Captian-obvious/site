@@ -14,6 +14,11 @@ function draw(src){
     return myRectangle;
 };
 
+function replaceurl(paramText){
+    var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?' + paramText;
+    window.history.pushState({ path: newurl }, '', newurl);
+};
+
  function animate(myRectangle, canvas, context, startTime) {
      var time = (new Date()).getTime() - startTime;
      var amplitude = 150;
@@ -65,8 +70,7 @@ window.addEventListener('load', function() {
         </div>
     </div>
     `
-    var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?player=' + urlParameter;
-    window.history.pushState({ path: newurl }, '', newurl);
+    replaceurl("player=' + urlParameter");
     var audio = new Audio();
     console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
