@@ -2,8 +2,6 @@ const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
 var urlParameter1 = false;
-var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
-window.history.pushState({ path: newurl }, '', newurl);
 
 function ease(t) {
     return sin(t * π/2);
@@ -53,6 +51,7 @@ window.addEventListener('load',function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
     const z = 0
+    urlParameter = true
     var container = document.getElementById('media-container')
     container.innerHTML = `
     <canvas id="canvas"></canvas>
@@ -69,6 +68,8 @@ window.addEventListener('load',function() {
         </div>
     </div>
     `
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
+    window.history.pushState({ path: newurl }, '', newurl);
     var audio = new Audio();
     console.log(audio)
     var dur = document.getElementById('MediaPlayerControl-seekbar');
