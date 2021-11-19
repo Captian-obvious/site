@@ -2,8 +2,6 @@ const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
 var urlPerameter1 = false;
-var location = document.location
-location.replace("?player=true")
 
 function ease(t) {
     return sin(t * π/2);
