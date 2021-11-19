@@ -84,7 +84,8 @@ window.addEventListener('load', function(){
         var SRC=dataimage.getAttribute("data-mediathumb-url");
         audio.src = SRC;
         audio.load();
-        var newTitle, newArtist = null,null
+        var newTitle = null;
+        var newArtist = null;
         if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
             filetitle.textContent = 'Unknown Artist - '+files[0].name
         };
