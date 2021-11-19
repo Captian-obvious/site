@@ -1,7 +1,9 @@
 const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
-var urlPerameter1 = false;
+var urlParameter1 = false;
+var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter1;
+window.history.pushState({ path: newurl }, '', newurl);
 
 function ease(t) {
     return sin(t * π/2);
