@@ -47,11 +47,10 @@ function calcRMSColor(rms) {
     let ret = intermed*150
     return ret
 }
-window.addEventListener('load', function(){
+window.addEventListener('load', function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label");
-    var container = document.getElementById('media-container');
-    container.innerHTML = `
+    document.getElementById('media-container').innerHTML = `
     <canvas id="canvas"></canvas>
     <div id="main">
         <div id="album">
