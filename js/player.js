@@ -47,11 +47,10 @@ function calcRMSColor(rms) {
     let ret = intermed*150
     return ret
 }
-window.addEventListener('load',function() {
+window.addEventListener('load', function(){
     var file = document.getElementById("thefile");
-    var filetitle = document.getElementById("file-label")
-    const z = 0
-    var container = document.getElementById('media-container')
+    var filetitle = document.getElementById("file-label");
+    var container = document.getElementById('media-container');
     container.innerHTML = `
     <canvas id="canvas"></canvas>
     <div id="main">
@@ -67,7 +66,7 @@ window.addEventListener('load',function() {
         </div>
     </div>
     `
-    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
+    var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?player=' + urlParameter;
     window.history.pushState({ path: newurl }, '', newurl);
     var audio = new Audio();
     console.log(audio)
@@ -120,8 +119,8 @@ window.addEventListener('load',function() {
         });
         audio.play()
         urlParameter = true
-        if newArtist!=null && newTitle!=null {
-            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter + "&input='"+newTitle+" - "+newArtist;
+        if newArtist!=null && newTitle!=null { 
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter + '&input=' + newTitle + ' - ' + newArtist;
             window.history.pushState({ path: newurl }, '', newurl);
         else
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?player=' + urlParameter;
