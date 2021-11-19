@@ -1,17 +1,18 @@
-const ID3 = window.jsmediatags
-const sin = Math.sin
-const π = Math.PI
+const ID3 = window.jsmediatags;
+const sin = Math.sin;
+const π = Math.PI;
+var urlPerameter1 = false;
 
 function ease(t) {
-    return sin(t * π/2)
-}
+    return sin(t * π/2);
+};
 
 function draw(src){
     var myRectangle = new Image();
     myRectangle.src = src;
     myRectangle.onload = function(){};
     return myRectangle;
-}
+};
 
  function animate(myRectangle, canvas, context, startTime) {
      var time = (new Date()).getTime() - startTime;
@@ -49,6 +50,8 @@ function calcRMSColor(rms) {
 window.addEventListener('load',function() {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label")
+    var location = document.location
+    location.replace(location.pathName+"?player=true")
     const z = 0
     var container = document.getElementById('media-container')
     container.innerHTML = `
