@@ -119,7 +119,7 @@ window.addEventListener('load', function() {
                 console.log(error);
             },
         });
-        replaceurl("player=true&input="+input);
+        replaceurl("player=true&input="+input+"&playing=true");
         audio.play();
         var context = new AudioContext();
         console.log(context);
@@ -252,9 +252,11 @@ window.addEventListener('load', function() {
         });
         audio.addEventListener("pause", function() {
             button.className = "MediaPlayerIcon icon-play";
+            replaceurl("player=true&input="+input+"&playing=false")
         });
         audio.addEventListener("play", function() {
             button.className = "MediaPlayerIcon icon-pause";
+            replaceurl("player=true&input="+input+"&playing=true")
         });
     };
     function formatTime(val) {
