@@ -252,11 +252,9 @@ window.addEventListener('load', function() {
         });
         audio.addEventListener("pause", function() {
             button.className = "MediaPlayerIcon icon-play";
-            replaceurl("player=true&input="+input+"&playing=false")
         });
         audio.addEventListener("play", function() {
             button.className = "MediaPlayerIcon icon-pause";
-            replaceurl("player=true&input="+input+"&playing=true")
         });
     };
     function formatTime(val) {
