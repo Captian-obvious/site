@@ -119,7 +119,7 @@ window.addEventListener('load', function() {
                 console.log(error);
             },
         });
-        replaceurl("player=true&input="+input+"&playing=true");
+        replaceurl("player=true&input="+input);
         audio.play();
         var context = new AudioContext();
         console.log(context);
