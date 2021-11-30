@@ -102,7 +102,6 @@ window.addEventListener('load', function() {
                 const format = tag.tags.picture.format;
                 const title = tag.tags.title;
                 const artist = tag.tags.artist;
-                input = artist + " - " + title
                 if (data && format != null) {
                     let str = "";
                     for (var o=0;o<data.length;o++) {
