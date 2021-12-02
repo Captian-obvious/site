@@ -169,7 +169,7 @@ window.addEventListener('load', function() {
             ctx.clearRect(0,0,WIDTH,HEIGHT)
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
-            let rad = (loud/10);
+            let rad = (loud/7);
             gn.gain.setValueAtTime(vol.value/100, audio.currentTime);
             /*
             ctx.lineWidth = barWidth;
