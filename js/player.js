@@ -137,7 +137,7 @@ window.addEventListener('load', function() {
         
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
-        analyser.minDecibels = -130;
+        analyser.minDecibels = -140;
                         
         var bufferLength = analyser.frequencyBinCount;
         console.log(bufferLength);
