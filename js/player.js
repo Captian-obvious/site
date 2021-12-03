@@ -102,7 +102,7 @@ window.addEventListener('load', function() {
                 const format = tag.tags.picture.format;
                 const title = tag.tags.title;
                 const artist = tag.tags.artist;
-                if (data && format != null) {
+                if (data.length != 0 && format != null) {
                     let str = "";
                     for (var o=0;o<data.length;o++) {
                         str+=String.fromCharCode(data[o]);
