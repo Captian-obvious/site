@@ -202,12 +202,12 @@ window.addEventListener('load', function() {
                 /*
                 barHeight = dataArray[i]
                 */
-                barHeight = ((dataArray[i]/255)*50);
+                barHeight = ((dataArray[i]/255)*70);
                 ctx.save()
                 ctx.translate(centerX, centerY)
                 ctx.rotate(90+i*((Math.PI*2)/bufferLength))
 
-                var r = ((barHeight/50)*255) + (25 * (i/bufferLength));
+                var r = ((barHeight/70)*255) + (25 * (i/bufferLength));
                 var g = 250 * (i/bufferLength);
                 var b = 50;
 
