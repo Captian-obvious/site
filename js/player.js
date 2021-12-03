@@ -199,20 +199,25 @@ window.addEventListener('load', function() {
             }
             */
             for (var i = 0; i < bufferLength; i++) {
-               barHeight = dataArray[i];
-               ctx.save()
-               ctx.translate(centerX, centerY)
-               ctx.rotate(90+i*((Math.PI*2)/bufferLength))
+                /*
+                barHeight = dataArray[i]
+                */
+                barHeight = ((dataArray[i]/255)*100);
+                ctx.save()
+                ctx.translate(centerX, centerY)
+                ctx.rotate(90+i*((Math.PI*2)/bufferLength))
 
-               var r = barHeight + (25 * (i/bufferLength));
-               var g = 250 * (i/bufferLength);
-               var b = 50;
+                var r = barHeight + (25 * (i/bufferLength));
+                var g = 250 * (i/bufferLength);
+                var b = 50;
 
-               ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-               ctx.fillRect(0,0+rad, barWidth, barHeight/4.3)
-               ctx.fillStyle = "rgb(255,255,255)";
-               ctx.fillRect(0,0+rad+barHeight/4.3, barWidth, 1)
-               ctx.restore()
+                ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                /*ctx.fillRect(0,0+rad, barWidth, barHeight/4.3)*/
+                ctx.fillRect(0,0+rad, barWidth, barHeight)
+                ctx.fillStyle = "rgb(255,255,255)";
+                /*ctx.fillRect(0,0+rad+barHeight/4.3, barWidth, 1)*/
+                ctx.fillRect(0,0+rad+barHeight, barWidth, 1)
+                ctx.restore()
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY,rad, 0, Math.PI * 2, false);
