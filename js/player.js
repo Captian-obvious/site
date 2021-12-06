@@ -19,18 +19,6 @@ function replaceurl(paramText){
     window.history.pushState({ path: newurl }, '', newurl);
 };
 
-function addKeyCode(key, callback) {
-    document.addEventListener("keypress", function onEvent(event) {
-        if (event.key === key) {
-            if (typeof(classback.OnEvent === "function") {
-                callback.OnEvent();
-            }else{
-                callback.OnError();
-            };
-        };
-    });
-};
-
  function animate(myRectangle, canvas, context, startTime) {
      var time = (new Date()).getTime() - startTime;
      var amplitude = 150;
@@ -40,7 +28,7 @@ function addKeyCode(key, callback) {
      myRectangle.Y = nextY;
      context.clearRect(0, 0, canvas.width, canvas.height);
      context.drawImage(myRectangle);
-}
+};
 
 function getRMS(arr) {
     var square = 0;
