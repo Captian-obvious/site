@@ -19,6 +19,14 @@ function replaceurl(paramText){
     window.history.pushState({ path: newurl }, '', newurl);
 };
 
+function addKeyCode(key, callback) {
+    document.addEventListener("keypress", function onEvent(event) {
+        if (event.key === key) {
+            callback.OnEvent();
+        };
+    });
+};
+
  function animate(myRectangle, canvas, context, startTime) {
      var time = (new Date()).getTime() - startTime;
      var amplitude = 150;
