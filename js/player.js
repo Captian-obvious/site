@@ -22,7 +22,11 @@ function replaceurl(paramText){
 function addKeyCode(key, callback) {
     document.addEventListener("keypress", function onEvent(event) {
         if (event.key === key) {
-            callback.OnEvent();
+            if (typeof(classback.OnEvent === "function") {
+                callback.OnEvent();
+            }else{
+                callback.OnError();
+            };
         };
     });
 };
