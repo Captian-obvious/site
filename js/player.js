@@ -133,7 +133,7 @@ window.addEventListener('load', function() {
         const centerY = canvas.height / 2;
         analyser.connect(gn);
         gn.connect(context.destination);
-        var fft_Size = 512*2;
+        var fft_Size = 512;
         
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
