@@ -72,7 +72,7 @@ window.addEventListener('load', function() {
     `
     replaceurl('player=' + urlParameter);
     var audio = new Audio();
-    function trigger(input) {
+    function trigger(f) {
         console.log(audio)
         var dur = document.getElementById('MediaPlayerControl-seekbar');
         var album = document.getElementById('album')
@@ -82,19 +82,18 @@ window.addEventListener('load', function() {
         var setting = document.getElementById("sound_options");
         var vol = document.getElementById("volume");
         var colorValue = "#ff0000";
-        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(input));
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(f));
             var SRC=dataimage.getAttribute("data-mediathumb-url");
             audio.src = SRC;
             audio.load();
-            var input = input.name;
-            if (filetitle.textContent != 'Unknown Artist - '+input.name) {
-                filetitle.textContent = 'Unknown Artist - '+input.name
+            var input = f.name;
+            if (filetitle.textContent != 'Unknown Artist - '+f.name) {
+                filetitle.textContent = 'Unknown Artist - '+f.name
             };
             if (album.style.backgroundImage != "url(../../images/default/default-album-image.png)") {
                 album.style.backgroundImage = "url(../../images/default/default-album-image.png)";
-            }
-
-            ID3.read(input,{
+            };
+            ID3.read(f,{
                 onSuccess: function(tag){
                     console.log(tag);
                     const data = tag.tags.picture.data;
