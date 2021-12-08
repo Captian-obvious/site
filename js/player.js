@@ -82,7 +82,7 @@ window.addEventListener('load', function() {
         var setting = document.getElementById("sound_options");
         var vol = document.getElementById("volume");
         var colorValue = "#ff0000";
-        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(input));
             var SRC=dataimage.getAttribute("data-mediathumb-url");
             audio.src = SRC;
             audio.load();
