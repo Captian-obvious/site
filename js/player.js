@@ -72,8 +72,7 @@ window.addEventListener('load', function() {
     `
     replaceurl('player=' + urlParameter);
     var audio = new Audio();
-    function trigger(f) {
-        console.log(audio)
+    console.log(audio)
         var dur = document.getElementById('MediaPlayerControl-seekbar');
         var album = document.getElementById('album')
         var dataimage = document.getElementById("MediaPlayerIcon-icon-play");
@@ -81,19 +80,27 @@ window.addEventListener('load', function() {
         var position = document.getElementById("time-position");
         var setting = document.getElementById("sound_options");
         var vol = document.getElementById("volume");
+    function formatTime(val) {
+            var min = Math.floor((val/60));
+            var sec = Math.floor(val - (min * 60));
+            if (sec < 10) {sec = '0'+sec};
+            return min+':'+sec;
+        };
+    file.onchange = function() {
+        var files = this.files;
         var colorValue = "#ff0000";
-        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(f));
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
             var SRC=dataimage.getAttribute("data-mediathumb-url");
             audio.src = SRC;
             audio.load();
             var input = f.name;
-            if (filetitle.textContent != 'Unknown Artist - '+f.name) {
-                filetitle.textContent = 'Unknown Artist - '+f.name
+            if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
+                filetitle.textContent = 'Unknown Artist - '+files[0].name
             };
             if (album.style.backgroundImage != "url(../../images/default/default-album-image.png)") {
                 album.style.backgroundImage = "url(../../images/default/default-album-image.png)";
             };
-            ID3.read(f,{
+            ID3.read(files[0],{
                 onSuccess: function(tag){
                     console.log(tag);
                     const data = tag.tags.picture.data;
@@ -258,15 +265,5 @@ window.addEventListener('load', function() {
             audio.addEventListener("play", function() {
                 button.className = "MediaPlayerIcon icon-pause";
             });
-        function formatTime(val) {
-            var min = Math.floor((val/60));
-            var sec = Math.floor(val - (min * 60));
-            if (sec < 10) {sec = '0'+sec};
-            return min+':'+sec;
-        };
-    };
-    file.onchange = function() {
-        var files = this.files;
-        trigger(files[0]);
     };
 });
