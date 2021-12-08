@@ -7,10 +7,6 @@ function ease(t) {
     return sin(t * π/2);
 };
 
-function runOn(files) {
-    triggger(files);
-};
-
 function draw(src){
     var myRectangle = new Image();
     myRectangle.src = src;
