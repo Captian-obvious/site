@@ -238,7 +238,7 @@ window.addEventListener('load', function() {
             setting.addEventListener("click", function() {
                 if (vol.hidden == true) {
                     vol.hidden = false
-                }else{
+                } else {
                     vol.hidden = true
                 }
             })
@@ -250,7 +250,7 @@ window.addEventListener('load', function() {
                 if(this.className == 'MediaPlayerIcon icon-pause'){
                     this.className = "MediaPlayerIcon icon-play";
                     audio.pause();
-                }else{
+                } else {
                     this.className = "MediaPlayerIcon icon-pause";
                     audio.play();
                 };
