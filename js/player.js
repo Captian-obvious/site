@@ -97,8 +97,8 @@ window.addEventListener('load', function() {
             if (filetitle.textContent != 'Unknown Artist - '+files[0].name) {
                 filetitle.textContent = 'Unknown Artist - '+files[0].name
             };
-            if (album.style.backgroundImage != "url(../../images/default/default-album-image.png)") {
-                album.style.backgroundImage = "url(../../images/default/default-album-image.png)";
+            if (album.style.backgroundImage != "url(../../images/default/default-album-icon.png)") {
+                album.style.backgroundImage = "url(../../images/default/default-album-icon.png)";
             };
             ID3.read(files[0],{
                 onSuccess: function(tag){
