@@ -143,7 +143,7 @@ window.addEventListener("load", function () {
         var gn = context.createGain();
         analyser.connect(gn);
         gn.connect(context.destination);
-        if (isQuery('visualizer=true' 0)===true) {
+        if (isQuery('visualizer=true', 0)===true) {
               var fft_Size = 512;
 
               analyser.fftSize = fft_Size;
