@@ -140,10 +140,10 @@ window.addEventListener("load", function () {
         src.connect(analyser);
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
+        var gn = context.createGain();
         analyser.connect(gn);
         gn.connect(context.destination);
-        var gn = context.createGain();
-        if (query('visualizer=true' 0)===true) {
+        if (isQuery('visualizer=true' 0)===true) {
               var fft_Size = 512;
 
               analyser.fftSize = fft_Size;
