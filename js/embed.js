@@ -160,6 +160,7 @@ window.addEventListener("load", function () {
               var maxHeight = canvas.height / 2;
               var WIDTH = canvas.width;
               var HEIGHT = canvas.height;
+              ctx.clearRect();
 
               var barWidth = WIDTH / bufferLength;
               var barHeight;
