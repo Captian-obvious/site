@@ -61,9 +61,9 @@ window.addEventListener("load", function () {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label");
     document.getElementById("media-container").innerHTML = `
-    <canvas id="canvas"></canvas>
     <div id="main">
         <div id="album">
+            <canvas id="canvas"></canvas>
             <div id="MediaPlayerControls">
                 <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>
                 <div id="sound_options" class="MediaPlayerIcon icon-volume">
@@ -175,10 +175,7 @@ window.addEventListener("load", function () {
                   var curtime = formatTime(audio.currentTime);
                   var time = formatTime(audio.duration);
                   position.innerHTML = curtime + " / " + time;
-                  loud = getRMS(dataArray);
-                  ctx.clearRect(0, 0, WIDTH, HEIGHT);
-                  ctx.fillStyle = "#000000";
-                  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+                  loud = getRMS(dataArray)
                   let rad = loud / 7;
                   gn.gain.setValueAtTime(vol.value / 100, audio.currentTime);
                   /*
