@@ -260,7 +260,7 @@ window.addEventListener("load", function () {
             audio.addEventListener("ended", function () {
                 button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max;
-                if f < array.length + 0.01 {
+                if (f < array.length) {
                     f+=1
                     playAudio(array,f)
                 } else {
