@@ -88,45 +88,48 @@ window.addEventListener("load", function () {
         }
         return min + ":" + sec;
     }
-    file.onchange = function () {
-        var files = this.files;
+    function play(array)
+        let f = 0;
         var colorValue = "#ff0000";
-        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
-        var SRC = dataimage.getAttribute("data-mediathumb-url");
-        audio.src = SRC;
-        audio.load();
-        var input = files[0].name;
-        if (filetitle.textContent != "Unknown Artist - " + files[0].name) {
-            filetitle.textContent = "Unknown Artist - " + files[0].name;
-        }
-        if (album.style.backgroundImage != "url(../../images/default/default-album-icon.png)") {
-            album.style.backgroundImage = "url(../../images/default/default-album-icon.png)";
-        }
-        ID3.read(files[0], {
-            onSuccess: function (tag) {
-                console.log(tag);
-                const data = tag.tags.picture.data;
-                const format = tag.tags.picture.format;
-                const title = tag.tags.title;
-                const artist = tag.tags.artist;
-                if (data.length != 0 && format != null) {
-                    let str = "";
-                    for (var o = 0; o < data.length; o++) {
-                        str += String.fromCharCode(data[o]);
+        function playAudio(arr, f) {
+            dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(arr[f]));
+            var SRC = dataimage.getAttribute("data-mediathumb-url");
+            audio.src = SRC;
+            audio.load();
+            var input = arr[f].name;
+            if (filetitle.textContent != "Unknown Artist - " + arr[f].name) {
+                filetitle.textContent = "Unknown Artist - " + arr[f].name;
+            }
+            if (album.style.backgroundImage != "url(../../images/default/default-album-icon.png)") {
+                album.style.backgroundImage = "url(../../images/default/default-album-icon.png)";
+            }
+            ID3.read(arr[f], {
+                onSuccess: function (tag) {
+                    console.log(tag);
+                    const data = tag.tags.picture.data;
+                    const format = tag.tags.picture.format;
+                    const title = tag.tags.title;
+                    const artist = tag.tags.artist;
+                    if (data.length != 0 && format != null) {
+                        let str = "";
+                        for (var o = 0; o < data.length; o++) {
+                            str += String.fromCharCode(data[o]);
+                        }
+                        var url = "data:" + format + ";base64," + window.btoa(str);
+                        album.style.backgroundImage = "url(" + url + ")";
                     }
-                    var url = "data:" + format + ";base64," + window.btoa(str);
-                    album.style.backgroundImage = "url(" + url + ")";
-                }
-                if (title != "" && artist != "") {
-                    filetitle.textContent = artist + " - " + title;
-                }
-            },
-            onError: function (error) {
-                console.log(error);
-            },
-        });
+                    if (title != "" && artist != "") {
+                        filetitle.textContent = artist + " - " + title;
+                    }
+                },
+                onError: function (error) {
+                    console.log(error);
+                },
+            });
+            audio.play();
+        };
         replaceurl("player=true&input=" + input);
-        audio.play();
+        playAudio(array, f)
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
@@ -232,7 +235,6 @@ window.addEventListener("load", function () {
             ctx.closePath();
         }
         renderFrame();
-        audio.play();
         dur.addEventListener("change", function () {
             audio.currentTime = dur.value;
         });
@@ -258,6 +260,14 @@ window.addEventListener("load", function () {
             audio.addEventListener("ended", function () {
                 button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max;
+                if f < array.length + 0.01 {
+                    f+=1
+                    playAudio(array,f)
+                } else {
+                    return;
+                };
+                f = 0
+                playAudio(array,f)
             });
         });
         audio.addEventListener("pause", function () {
@@ -266,5 +276,10 @@ window.addEventListener("load", function () {
         audio.addEventListener("play", function () {
             button.className = "MediaPlayerIcon icon-pause";
         });
+    };
+    file.onchange = function () {
+        var files = this.files;
+        var colorValue = "#ff0000";
+        play(files);
     };
 });
