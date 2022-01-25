@@ -1,5 +1,5 @@
 ---
-permalink: "/howtouse.md"
+permalink: "/howtouse.html"
 ---
 <h>HOW TO USE THE PLAYER</h>
 <p style='color: #980000'>
