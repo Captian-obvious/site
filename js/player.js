@@ -47,11 +47,6 @@ function getRMS(arr) {
   	var rms = rms/maxrms
     return rms *255;
 }
-function calcRMSColor(rms) {
-    let intermed = rms / 100;
-    let ret = intermed * 150;
-    return ret;
-}
 window.addEventListener("load", function () {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label");
@@ -171,7 +166,7 @@ window.addEventListener("load", function () {
             }
             ctx.beginPath();
             ctx.arc(centerX, centerY, rad, 0, Math.PI * 2, false);
-            ctx.fillStyle = "rgb(" + calcRMSColor(loud) + ", " + calcRMSColor(loud) + ",0)";
+            ctx.fillStyle = "rgb(" + loud + ", " + loud + ",0)";
             ctx.fill();
             ctx.closePath();
         }
