@@ -2,23 +2,20 @@ const ID3 = window.jsmediatags;
 const sin = Math.sin;
 const π = Math.PI;
 var urlParameter = false;
-
+var maxrms = 0
 function ease(t) {
     return sin((t * π) / 2);
 }
-
 function draw(src) {
     var myRectangle = new Image();
     myRectangle.src = src;
     myRectangle.onload = function () {};
     return myRectangle;
 }
-
 function replaceurl(paramText) {
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + paramText;
     window.history.pushState({ path: newurl }, "", newurl);
 }
-
 function animate(myRectangle, canvas, context, startTime) {
     var time = new Date().getTime() - startTime;
     var amplitude = 150;
@@ -29,23 +26,26 @@ function animate(myRectangle, canvas, context, startTime) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(myRectangle);
 }
-
+function getGreaterInt(x,y) {
+  	if x > y {
+      	return x;
+    }else{
+      	return y;
+    };
+};
 function getRMS(arr) {
     var square = 0;
     var mean = 0;
-    var rms = 0;
+    var intrms = 0;
     var n = arr.length;
-
-    // Calculate square.
     for (var i = 0; i < n; i++) {
         square += Math.pow(arr[i], 2);
-    }
-
-    // Calculate Mean.
+    };
     mean = square / n;
-    // Calculate Root.
-    rms = Math.sqrt(mean);
-    return rms;
+    intrms = Math.sqrt(mean);
+  	maxrms = getGreaterInt(rms, maxrms)
+  	var rms = rms/maxrms
+    return rms *255;
 }
 function calcRMSColor(rms) {
     let intermed = rms / 100;
@@ -55,21 +55,9 @@ function calcRMSColor(rms) {
 window.addEventListener("load", function () {
     var file = document.getElementById("thefile");
     var filetitle = document.getElementById("file-label");
-    document.getElementById("media-container").innerHTML = `
-    <canvas id="canvas"></canvas>
-    <div id="main">
-        <div id="album">
-            <div id="MediaPlayerControls">
-                <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>
-                <div id="sound_options" class="MediaPlayerIcon icon-volume">
-                    <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0" />
-                </div>
-            </div>
-            <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">
-            <div id="time-position"></div>
-        </div>
-    </div>
-    `;
+    document.getElementById(
+        "media-container"
+    ).innerHTML = `<canvas id="canvas"></canvas>\n<div id="main">\n    <div id="album">\n        <div id="MediaPlayerControls">\n            <div id="MediaPlayerIcon-icon-play" class="MediaPlayerIcon icon-play" data-mediathumb-url="src"></div>\n            <div id="sound_options" class="MediaPlayerIcon icon-volume">\n                <input id="volume" class="MediaPlayerControl-volume" type="range" max="100" min="0" />\n            </div>\n        </div>\n        <input id="MediaPlayerControl-seekbar" type="range" name="rng" min="0" value="0">\n       <div id="time-position"></div>\n    </div>\n</div>\n`;
     replaceurl("player=" + urlParameter);
     var audio = new Audio();
     console.log(audio);
@@ -88,48 +76,45 @@ window.addEventListener("load", function () {
         }
         return min + ":" + sec;
     }
-    function play(array)
-        let f = 0;
+    file.onchange = function () {
+        var files = this.files;
         var colorValue = "#ff0000";
-        function playAudio(arr, f) {
-            dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(arr[f]));
-            var SRC = dataimage.getAttribute("data-mediathumb-url");
-            audio.src = SRC;
-            audio.load();
-            var input = arr[f].name;
-            if (filetitle.textContent != "Unknown Artist - " + arr[f].name) {
-                filetitle.textContent = "Unknown Artist - " + arr[f].name;
-            }
-            if (album.style.backgroundImage != "url(../../images/default/default-album-icon.png)") {
-                album.style.backgroundImage = "url(../../images/default/default-album-icon.png)";
-            }
-            ID3.read(arr[f], {
-                onSuccess: function (tag) {
-                    console.log(tag);
-                    const data = tag.tags.picture.data;
-                    const format = tag.tags.picture.format;
-                    const title = tag.tags.title;
-                    const artist = tag.tags.artist;
-                    if (data.length != 0 && format != null) {
-                        let str = "";
-                        for (var o = 0; o < data.length; o++) {
-                            str += String.fromCharCode(data[o]);
-                        }
-                        var url = "data:" + format + ";base64," + window.btoa(str);
-                        album.style.backgroundImage = "url(" + url + ")";
+        dataimage.setAttribute("data-mediathumb-url", URL.createObjectURL(files[0]));
+        var SRC = dataimage.getAttribute("data-mediathumb-url");
+        audio.src = SRC;
+        audio.load();
+        var input = files[0].name;
+        if (filetitle.textContent != "Unknown Artist - " + files[0].name) {
+            filetitle.textContent = "Unknown Artist - " + files[0].name;
+        }
+        if (album.style.backgroundImage != "url(../../images/default/default-album-icon.png)") {
+            album.style.backgroundImage = "url(../../images/default/default-album-icon.png)";
+        }
+        ID3.read(files[0], {
+            onSuccess: function (tag) {
+                console.log(tag);
+                const data = tag.tags.picture.data;
+                const format = tag.tags.picture.format;
+                const title = tag.tags.title;
+                const artist = tag.tags.artist;
+                if (data.length != 0 && format != null) {
+                    let str = "";
+                    for (var o = 0; o < data.length; o++) {
+                        str += String.fromCharCode(data[o]);
                     }
-                    if (title != "" && artist != "") {
-                        filetitle.textContent = artist + " - " + title;
-                    }
-                },
-                onError: function (error) {
-                    console.log(error);
-                },
-            });
-            audio.play();
-        };
+                    var url = "data:" + format + ";base64," + window.btoa(str);
+                    album.style.backgroundImage = "url(" + url + ")";
+                }
+                if (title != "" && artist != "") {
+                    filetitle.textContent = artist + " - " + title;
+                }
+            },
+            onError: function (error) {
+                console.log(error);
+            },
+        });
         replaceurl("player=true&input=" + input);
-        playAudio(array, f)
+        audio.play();
         var context = new AudioContext();
         console.log(context);
         var src = context.createMediaElementSource(audio);
@@ -144,33 +129,23 @@ window.addEventListener("load", function () {
         analyser.connect(gn);
         gn.connect(context.destination);
         var fft_Size = 512;
-
         analyser.fftSize = fft_Size;
         analyser.maxDecibels = -3;
         analyser.minDecibels = -150;
-
         var bufferLength = analyser.frequencyBinCount;
         console.log(bufferLength);
         console.log(analyser);
-
         var dataArray = new Uint8Array(bufferLength);
         var dataArray1 = new Uint8Array(fft_Size);
-
         var maxHeight = canvas.height / 2;
         var WIDTH = canvas.width;
         var HEIGHT = canvas.height;
-
         var barWidth = WIDTH / bufferLength;
         var barHeight;
-
         function renderFrame() {
             requestAnimationFrame(renderFrame);
-
-            // x2 = 0;
-
             analyser.getByteFrequencyData(dataArray);
             analyser.getByteTimeDomainData(dataArray1);
-
             var curtime = formatTime(audio.currentTime);
             var time = formatTime(audio.duration);
             position.innerHTML = curtime + " / " + time;
@@ -180,52 +155,18 @@ window.addEventListener("load", function () {
             ctx.fillRect(0, 0, WIDTH, HEIGHT);
             let rad = loud / 7;
             gn.gain.setValueAtTime(vol.value / 100, audio.currentTime);
-            /*
-                ctx.lineWidth = barWidth;
-                let angle_step = (Math.PI * 2)/bufferLength
-                for (var i=0; i < bufferLength; i++) {
-                    barHeight = dataArray[i];
-
-                    var r = barHeight + (25 * (i/bufferLength));
-                    var g = 250 * (i/bufferLength);
-                    var b = 50;
-                    var angle = angle_step * i;
-
-                    var y = centerY + rad * Math.sin(angle);
-                    var x = centerX + rad * Math.cos(angle);
-
-
-                    var y1 = centerY + rad * (barHeight/50) * Math.sin(angle);
-                    var x1 = centerX + rad * (barHeight/50) * Math.cos(angle);
-
-                    var rgb = "rgb(" + r + "," + g + "," + b + ")";
-
-                    ctx.beginPath();
-                    ctx.moveTo(x,y);
-                    ctx.strokeStyle = rgb;
-                    ctx.lineTo(x1,y1);
-                    ctx.stroke();
-                }
-                */
             for (var i = 0; i < bufferLength; i++) {
-                /*
-                    barHeight = dataArray[i]
-                    */
-                barHeight = (dataArray[i] / 255) * 60;
+                /*barHeight = dataArray[i]*/ barHeight = (dataArray[i] / 255) * 60;
                 ctx.save();
                 ctx.translate(centerX, centerY);
                 ctx.rotate(90 + i * ((Math.PI * 2) / bufferLength));
-
                 var r = (barHeight / 60) * 255 + 25 * (i / bufferLength);
                 var g = 250 * (i / bufferLength);
                 var b = 50;
-
                 ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                /*ctx.fillRect(0,0+rad, barWidth, barHeight/4.3)*/
-                ctx.fillRect(0, 0 + rad, barWidth, barHeight);
+                /*ctx.fillRect(0,0+rad, barWidth, barHeight/4.3)*/ ctx.fillRect(0, 0 + rad, barWidth, barHeight);
                 ctx.fillStyle = "rgb(255,255,255)";
-                /*ctx.fillRect(0,0+rad+barHeight/4.3, barWidth, 1)*/
-                ctx.fillRect(0, 0 + rad + barHeight, barWidth, 1);
+                /*ctx.fillRect(0,0+rad+barHeight/4.3, barWidth, 1)*/ ctx.fillRect(0, 0 + rad + barHeight, barWidth, 1);
                 ctx.restore();
             }
             ctx.beginPath();
@@ -235,6 +176,7 @@ window.addEventListener("load", function () {
             ctx.closePath();
         }
         renderFrame();
+        audio.play();
         dur.addEventListener("change", function () {
             audio.currentTime = dur.value;
         });
@@ -260,14 +202,7 @@ window.addEventListener("load", function () {
             audio.addEventListener("ended", function () {
                 button.className = "MediaPlayerIcon icon-play";
                 dur.value = dur.max;
-                if (f < array.length) {
-                    f+=1
-                    playAudio(array,f)
-                } else {
-                    return;
-                };
-                f = 0
-                playAudio(array,f)
+              	maxrms = 0;
             });
         });
         audio.addEventListener("pause", function () {
@@ -276,10 +211,5 @@ window.addEventListener("load", function () {
         audio.addEventListener("play", function () {
             button.className = "MediaPlayerIcon icon-pause";
         });
-    };
-    file.onchange = function () {
-        var files = this.files;
-        var colorValue = "#ff0000";
-        play(files);
     };
 });
