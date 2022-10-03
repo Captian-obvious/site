@@ -3,7 +3,7 @@ input[type="range"] {
     margin-right: 15px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
-    background-image: linear-gradient(#980000, #980000);
+    background-image: linear-gradient(#ff0000, #ff0000);
     background-size: 70% 100%;
     background-repeat: no-repeat;
 }
@@ -12,7 +12,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #980000;
+    background: #ff0000;
     box-shadow: 0 0 2px 0 #555;
     transition: background .3s ease-in-out;
 }
@@ -21,7 +21,7 @@ input[type="range"]::-moz-range-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #980000;
+  background: #ff0000;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
 }
@@ -31,21 +31,21 @@ input[type="range"]::-ms-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #980000;
+  background: #ff0000;
   box-shadow: 0 0 2px 0 #555;
   transition: background .3s ease-in-out;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: #ff0200;
+  background: #980000;
 }
 
 input[type="range"]::-moz-range-thumb:hover {
-  background: #ff0200;
+  background: #980000;
 }
 
 input[type="range"]::-ms-thumb:hover {
-  background: #ff0200;
+  background: #980000;
 }
 
 /* Input Track */
