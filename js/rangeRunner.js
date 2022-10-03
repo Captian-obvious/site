@@ -1,8 +1,8 @@
 const rangeInputs = document.querySelectorAll('input[type="range"]')
 rangeInputs.forEach(input => {
     input.addEventListener('input', function(e) {
-        let target = input
-        if (input.type !== 'range') {
+        let target = e.target
+        if (target.type !== 'range') {
             target = document.getElementById('range')
         } 
         const min = target.min
