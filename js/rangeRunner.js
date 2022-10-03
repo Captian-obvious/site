@@ -3,7 +3,7 @@ rangeInputs.forEach(input => {
     input.addEventListener('input', function(e) {
         let target = e.target
         if (target.type !== 'range') {
-            target = document.getElementById('range')
+            target = document.getElementById('range') || document.getElementById('MediaPlayerControl-seekbar')
         } 
         const min = target.min
         const max = target.max
