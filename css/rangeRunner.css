@@ -3,7 +3,7 @@ input[type="range"] {
     margin-right: 15px;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
-    background-image: linear-gradient(#ff4500, #ff4500);
+    background-image: linear-gradient(#980000, #980000);
     background-size: 70% 100%;
     background-repeat: no-repeat;
 }
