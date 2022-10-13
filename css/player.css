@@ -57,9 +57,9 @@
 }
 #MediaPlayerControl-seekbar {
     width: 160px;
-    height: 10px;
+    height: 9px;
     position: fixed;
-    top:167px;
+    top:170px;
 }
 .icon-pause {
     background-image: url("../images/pause-icon.svg");
