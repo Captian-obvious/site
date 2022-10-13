@@ -1,5 +1,6 @@
 const rangeInputs = document.getElementsByTagName('input')
 for (var i=1; i <= rangeInputs.length; i++) {
+    var input = rangeInputs[i]
     input.addEventListener('input', function(e) {
         if (input.type === 'range') {
             let target = input
